@@ -18,7 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "name" => "Aplikasi sewa Studio Foto",
+        "email" => "asdfg@gmail.com",
+        "image" => "image-about.jpg"
+    ]);
 });
 
 Route::get('/katalog', function () {
