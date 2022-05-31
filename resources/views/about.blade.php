@@ -12,7 +12,7 @@
     <h3>@php
         echo $name;
     @endphp</h3>
-    <p>asdfg@gmail.com</p>
-    <img src="img/image-about.jpg" alt="contoh foto" width="300">
+    <p><?= $email; ?></p>
+    <img src="img/<?= $image; ?>" alt="<?= $name; ?>" width="300">
 </body>
 </html>
