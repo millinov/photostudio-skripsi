@@ -9,5 +9,8 @@
 </head>
 <body>
     <h1>Halaman About</h1>
+    <h3>Aplikasi sewa stufio foto</h3>
+    <p>asdfg@gmail.com</p>
+    <img src="img/image-about.jpg" alt="contoh foto" width="300">
 </body>
 </html>
