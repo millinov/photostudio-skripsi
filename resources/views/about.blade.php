@@ -12,7 +12,7 @@
     <h3>@php
         echo $name;
     @endphp</h3>
-    <p><?= $email; ?></p>
+    <p><?php echo $email; ?></p>
     <img src="img/<?= $image; ?>" alt="<?= $name; ?>" width="300">
 </body>
 </html>
