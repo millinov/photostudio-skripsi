@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        "title" => "Home"
+    ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
+        "title" => "About",
         "name" => "Aplikasi sewa Studio Foto",
         "email" => "asdfg@gmail.com",
         "image" => "image-about.jpg"
@@ -26,5 +29,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/katalog', function () {
-    return view('katalog');
+    return view('katalog', [
+        "title" => "Katalog"
+    ]);
 });
