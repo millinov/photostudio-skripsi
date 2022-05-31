@@ -21,6 +21,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/contoh', function () {
-    return view('contoh');
+Route::get('/katalog', function () {
+    return view('katalog');
 });
