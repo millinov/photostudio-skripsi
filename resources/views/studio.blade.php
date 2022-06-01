@@ -7,7 +7,8 @@
             {{ $studio->title }}
         </h2>
 
-        <h5>By: {{ $studio->owner }}</h5>
+        <h5>By: {{ $studio->owner }} </h5>
+        <h5>Category: Cantik</h5>
 
        {!! $studio->desc !!}
 

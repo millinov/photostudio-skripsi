@@ -11,4 +11,9 @@ class Studio extends Model
 
     // protected $fillable =['title','owner','excerpt','desc'];
     protected $guarded =['id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
