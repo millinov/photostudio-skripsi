@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $guarded =['id'];
 
-    public function studio()
+    public function studios()
     {
         return $this->hasMany(Studio::class);
     }

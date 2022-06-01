@@ -40,7 +40,7 @@ Route::get('/katalog/{studio:slug}', [StudioController::class, 'show']);
 Route::get('/categories/{category:slug}', function(Category $category){
     return view('category',[
         'title' => $category->name,
-        'studios'=> $category->studios,
+        'catalogue'=> $category->studios,
         'category' => $category->name
     ]);
 });
