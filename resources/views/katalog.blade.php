@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('container')
+
+    <h1 class="mb-5">Halaman Katalog</h1>
+
     @foreach ($catalogue as $item)
     <article class="mb-4">
 
