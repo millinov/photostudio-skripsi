@@ -31,4 +31,18 @@ class Studio
         return self::$studio_foto;
     }
 
+    public static function find($slug)
+    {
+        $studios = self::$studio_foto;
+        $studio = [];
+        foreach($studios as $item) {
+            if($item["slug"] === $slug)
+            {
+                $studio = $item;
+            }
+        }
+
+        return $studio;
+    }
+
 }

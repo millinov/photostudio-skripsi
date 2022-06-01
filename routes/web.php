@@ -40,18 +40,8 @@ Route::get('/katalog', function () {
 // halaman single post
 Route::get('katalog/{slug}', function($slug) {
 
-    
-
-    $new_studio = [];
-    foreach(Studio::all() as $item) {
-        if($item["slug"] == $slug)
-        {
-            $new_studio = $item;
-        }
-    }
-
     return view('studio',[
         "title" => "Studio Foto",
-        "studio" => $new_studio
+        "studio" => Studio::find($slug)
     ]);
 });
