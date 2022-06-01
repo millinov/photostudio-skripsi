@@ -9,7 +9,7 @@
 
         <h5>By: {{ $studio->owner }}</h5>
 
-        <p>{{ $studio->desc }}</p>
+        {{ $studio->desc }}
 
     </article>
 
