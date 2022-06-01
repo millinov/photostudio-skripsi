@@ -2,10 +2,10 @@
 
 @section('container')
 
-    <h1 class="mb-5">Halaman Katalog</h1>
+    <h1 class="mb-4">Halaman Katalog</h1>
 
     @foreach ($catalogue as $item)
-    <article class="mb-4">
+    <article class="mb-2">
 
         <h2>
             <a href="/katalog/{{ $item->slug }}" class="text-decoration-none">{{ $item->title }}</a>
