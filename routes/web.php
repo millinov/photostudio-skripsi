@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudioController;
 use App\Models\Studio;
 use Illuminate\Support\Facades\Route;
 
@@ -29,19 +30,6 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/katalog', function () {
-
-    return view('katalog', [
-        "title" => "Katalog",
-        "catalogue" => Studio::all()
-    ]);
-});
-
+Route::get('/katalog', [StudioController::class, 'index']);
 // halaman single post
-Route::get('katalog/{slug}', function($slug) {
-
-    return view('studio',[
-        "title" => "Studio Foto",
-        "studio" => Studio::find($slug)
-    ]);
-});
+Route::get('katalog/{slug}', [StudioController::class, 'show']);
