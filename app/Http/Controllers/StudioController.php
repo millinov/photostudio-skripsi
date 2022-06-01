@@ -15,11 +15,11 @@ class StudioController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show(Studio $studio)
     {
         return view('studio',[
             "title" => "Studio Foto",
-            "studio" => Studio::find($slug)
+            "studio" => $studio
         ]);
     }
 }

@@ -32,4 +32,4 @@ Route::get('/about', function () {
 
 Route::get('/katalog', [StudioController::class, 'index']);
 // halaman single post
-Route::get('katalog/{slug}', [StudioController::class, 'show']);
+Route::get('katalog/{studio}', [StudioController::class, 'show']);
