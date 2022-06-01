@@ -4,12 +4,12 @@
     <article class="mb-4">
 
         <h2>
-            {{ $studio["title"] }}
+            {{ $studio->title }}
         </h2>
 
-        <h5>By: {{ $studio["owner"] }}</h5>
+        <h5>By: {{ $studio->owner }}</h5>
 
-        <p>{{ $studio["desc"] }}</p>
+        <p>{{ $studio->desc }}</p>
 
     </article>
 
