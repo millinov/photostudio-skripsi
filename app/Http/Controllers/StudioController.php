@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Studio;
 
 class StudioController extends Controller
 {
@@ -10,7 +11,7 @@ class StudioController extends Controller
     {
         return view('katalog', [
             "title" => "Katalog",
-            "catalogue" => \App\Models\Studio::all()
+            "catalogue" => Studio::all()
         ]);
     }
 
@@ -18,7 +19,7 @@ class StudioController extends Controller
     {
         return view('studio',[
             "title" => "Studio Foto",
-            "studio" => \App\Models\Studio::find($slug)
+            "studio" => Studio::find($slug)
         ]);
     }
 }
