@@ -37,6 +37,14 @@ Route::get('/katalog/{studio:slug}', [StudioController::class, 'show']);
 
 // halaman kategori
 
+Route::get('/categories', function()
+{
+    return view('categories',[
+        'title' => 'Kategori Studio',
+        'categories' => Category::all()
+    ]);
+});
+
 Route::get('/categories/{category:slug}', function(Category $category){
     return view('category',[
         'title' => $category->name,
