@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudioController;
+use App\Models\Category;
 use App\Models\Studio;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,14 @@ Route::get('/about', function () {
 
 Route::get('/katalog', [StudioController::class, 'index']);
 // halaman single post
-Route::get('katalog/{studio:slug}', [StudioController::class, 'show']);
+Route::get('/katalog/{studio:slug}', [StudioController::class, 'show']);
+
+// halaman kategori
+
+Route::get('/categories/{category:slug}', function(Category $category){
+    return view('category',[
+        'title' => $category->name,
+        'studios'=> $category->studios,
+        'category' => $category->name
+    ]);
+});
