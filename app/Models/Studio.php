@@ -9,5 +9,6 @@ class Studio extends Model
 {
     use HasFactory;
 
-    protected $fillable =['title','owner','excerpt','desc'];
+    // protected $fillable =['title','owner','excerpt','desc'];
+    protected $guarded =['id'];
 }
