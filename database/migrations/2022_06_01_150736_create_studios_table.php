@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('studios', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('owner');
             $table->text('excerpt');
             $table->text('desc');
