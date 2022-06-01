@@ -41,7 +41,6 @@ class Studio
         //         $studio = $item;
         //     }
         // }
-
         return $studios->firstWhere('slug', $slug);
     }
 
