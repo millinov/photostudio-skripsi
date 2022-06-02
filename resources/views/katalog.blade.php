@@ -11,9 +11,7 @@
             <a href="/katalog/{{ $item->slug }}" class="text-decoration-none">{{ $item->title }}</a>
         </h3>
 
-        @if ($title === "katalog")
-            <h5 class="mb-1">Owner: <a href="/owners/{{ $item->user->username }}" class="text-decoration-none">{{ $item->user->name }}</a></h5>
-        @endif
+        <h5 class="mb-1">Owner: <a href="/owners/{{ $item->user->username }}" class="text-decoration-none">{{ $item->user->name }}</a></h5>
         
         <h5 class="">Category: <a href="/categories/{{ $item->category->slug }}" class="text-decoration-none">{{ $item->category->name }}</a> </h5>
 
