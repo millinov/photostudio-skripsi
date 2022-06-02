@@ -7,7 +7,7 @@
             {{ $studio->title }}
         </h2>
 
-        <h5 class="mb-0">By: {{ $studio->owner }} </h5>
+        <h5 class="mb-1">By: <a href="#" class="text-decoration-none">{{ $item->user->name }}</a></h5>
         <h5 class="">Category: <a href="/categories/{{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a> </h5>
 
        {!! $studio->desc !!}
