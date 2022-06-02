@@ -54,7 +54,7 @@ Route::get('/categories/{category:slug}', function(Category $category){
     ]);
 });
 
-Route::get('/owners/{owner}', function(User $owner){
+Route::get('/owners/{owner:username}', function(User $owner){
     return view('katalog',[
         'title' => $owner->name,
         'catalogue'=> $owner->studios,
