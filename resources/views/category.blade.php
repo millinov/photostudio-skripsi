@@ -17,4 +17,7 @@
 
     </article>
     @endforeach
+
+    <a href="/categories">Kembali ke list kategori</a>
+
 @endsection
