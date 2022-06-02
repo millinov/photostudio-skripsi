@@ -11,7 +11,8 @@ class StudioController extends Controller
     {
         return view('katalog', [
             "title" => "Katalog",
-            "catalogue" => Studio::all()
+            // "catalogue" => Studio::all()
+            "catalogue" => Studio::latest()->get()
         ]);
     }
 

@@ -17,7 +17,13 @@ class StudioFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence(mt_rand(2,3)),
+            'slug' => $this->faker->slug(),
+            'excerpt' => $this->faker->paragraph(),
+            'desc' => $this->faker->paragraph(mt_rand(2,5)),
+            'user_id' => mt_rand(2,6),
+            'category_id' => mt_rand(1,3),
+
         ];
     }
 }

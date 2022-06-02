@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function studio()
     {
-        return $this-> belongsTo(Studio::class);
+        return $this-> hasMany(Studio::class);
     }
 }
