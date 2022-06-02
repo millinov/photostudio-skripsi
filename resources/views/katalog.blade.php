@@ -11,7 +11,7 @@
             <a href="/katalog/{{ $item->slug }}" class="text-decoration-none">{{ $item->title }}</a>
         </h3>
 
-        <h5 class="mb-0">Owner: {{ $item->owner }}</h5>
+        <h5 class="mb-0">Owner: {{ $item->user->name }}</h5>
         <h5 class="">Category: <a href="/categories/{{ $item->category->slug }}" class="text-decoration-none">{{ $item->category->name }}</a> </h5>
 
         <p>{{ $item->excerpt }}</p>
