@@ -5,7 +5,7 @@
     <h1 class="mb-4">Halaman Kategori : {{ $category }}</h1>
 
     @foreach ($catalogue as $item)
-    <article class="mb-2">
+    <article class="mb-2 border-bottom pb-3">
 
         <h2>
             <a href="/katalog/{{ $item->slug }}" class="text-decoration-none">{{ $item->title }}</a>
