@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\StudioController;
-use App\Models\Category;
+use App\Models\User;
 use App\Models\Studio;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +51,12 @@ Route::get('/categories/{category:slug}', function(Category $category){
         'title' => $category->name,
         'catalogue'=> $category->studios,
         'category' => $category->name
+    ]);
+});
+
+Route::get('/owners/{owner}', function(User $owner){
+    return view('katalog',[
+        'title' => $owner->name,
+        'catalogue'=> $owner->studios,
     ]);
 });
