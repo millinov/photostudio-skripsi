@@ -8,10 +8,10 @@
         <div class="row">
             @foreach ($categories as $categories)
             
-            <div class="col-md-4">
+            <div class="col-md-4 mb-4 card-group">
                 <div class="card bg-dark text-white">
             
-                    <img src="..." class="card-img" alt="...">
+                    <img src="https://picsum.photos/1200/400?random={{ $categories->id }}" class="card-img" alt="{{ $categories->name }}">
             
                     <div class="card-img-overlay">
                     <h5 class="card-title">{{ $categories->name }}</h5>
