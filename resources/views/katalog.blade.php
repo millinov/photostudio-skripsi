@@ -34,7 +34,7 @@
             <div class="col mb-4 card-group">
                 <div class="card">
 
-                    <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0, 0.575); border-top-left-radius: 0.375rem">
+                    <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0, 0.575); border-top-left-radius: 0.375rem; border-bottom-right-radius: 0.375rem;">
                         <a href="/categories/{{ $catalogue->category->slug }}" class="text-decoration-none text-white">{{ $catalogue->category->name }}</a>
                     </div>
         
