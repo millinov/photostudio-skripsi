@@ -13,10 +13,10 @@
             <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="/about">About</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link {{ ($title === "Katalog") ? 'active' : '' }}" href="/katalog">Katalog</a>
+              <a class="nav-link {{ ($active === "studios") ? 'active' : '' }}" href="/katalog">Katalog</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link {{ ($title === "Kategori Studio") ? 'active' : '' }}" href="/categories">Kategori</a>
+              <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Kategori</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
