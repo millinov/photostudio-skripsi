@@ -5,21 +5,21 @@
     <h1 class="mb-4">List Kategori</h1>
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             @foreach ($categories as $categories)
             
             <div class="col-md-4 mb-4 card-group">
-                <div class="card bg-dark text-white">
-            
-                    <img src="https://picsum.photos/1200/400?random={{ $categories->id }}" class="card-img" alt="{{ $categories->name }}">
-            
-                    <div class="card-img-overlay">
-                    <h5 class="card-title">{{ $categories->name }}</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">Last updated 3 mins ago</p>
+                <a href="/categories/{{ $categories->slug }}">
+                    <div class="card bg-dark text-white">
+                
+                        <img src="https://picsum.photos/500/400?random={{ $categories->id }}" class="card-img" alt="{{ $categories->name }}">
+                
+                        <div class="card-img-overlay d-flex align-items-center p-0">
+                            <h5 class="card-title text-center flex-fill p-4" style="background-color: rgba(0,0,0,0.7)">{{ $categories->name }}</h5>
+                        </div>
+                
                     </div>
-            
-                </div>
+                </a>
             </div>
                 
             @endforeach
