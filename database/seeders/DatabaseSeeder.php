@@ -42,6 +42,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'wedding'
         ]);
 
+        Category::create([
+            'name' => 'Modelling',
+            'slug' => 'modelling'
+        ]);
+
         Studio::factory(20)->create();
 
         // \App\Models\User::factory()->create([
