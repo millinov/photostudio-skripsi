@@ -10,7 +10,7 @@ class StudioController extends Controller
     public function index()
     {
         return view('katalog', [
-            "title" => "Katalog",
+            "title" => "All Studio",
             // "catalogue" => Studio::all()
             "catalogue" => Studio::latest()->get()
         ]);

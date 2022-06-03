@@ -48,15 +48,14 @@ Route::get('/categories', function()
 
 Route::get('/categories/{category:slug}', function(Category $category){
     return view('katalog',[
-        'title' => $category->name,
+        'title' => "Category: $category->name",
         'catalogue'=> $category->studios,
-        'category' => $category->name
     ]);
 });
 
 Route::get('/owners/{owner:username}', function(User $owner){
     return view('katalog',[
-        'title' => $owner->name,
+        'title' => "Studio by $owner->name",
         'catalogue'=> $owner->studios,
     ]);
 });
