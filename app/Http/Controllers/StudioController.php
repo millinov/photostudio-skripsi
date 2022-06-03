@@ -12,7 +12,7 @@ class StudioController extends Controller
         return view('katalog', [
             "title" => "All Studio",
             // "catalogue" => Studio::all()
-            "catalogue" => Studio::with(['user','category'])->latest()->get()
+            "catalogue" => Studio::latest()->get()
         ]);
     }
 
