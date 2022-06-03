@@ -35,7 +35,7 @@
     
 
     <div class="container">
-        <div class="row row-cols-3">
+        <div class="row row-cols-3 justify-content-center">
             @foreach ($catalogue->skip(1) as $catalogue)
             <div class="col mb-4 card-group">
                 <div class="card">
