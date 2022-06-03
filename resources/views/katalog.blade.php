@@ -22,7 +22,7 @@
     </article>
     @endforeach
 
-    @if ($title != "Katalog")
+    @if ($title != "All Studio")
 
     <a href="/katalog">Kembali ke katalog</a>
         
