@@ -22,10 +22,11 @@ class StudioFactory extends Factory
             'excerpt' => $this->faker->paragraph(),
             // 'desc' => '<p>'. implode('</p><p>', $this->faker->paragraphs(mt_rand(1,3))) . '</p>',
             'desc' => collect($this->faker->paragraphs(mt_rand(1,3)))
-                        ->map(fn($p) => "<p>$p</p>"),
+                        ->map(fn($p) => "<p>$p</p>")
                         // ->map(function($p){
                         //     return "<p>$p</p>";
-                        // }),
+                        // })
+                        ->implode(''),
             'user_id' => mt_rand(2,6),
             'category_id' => mt_rand(1,4),
 
