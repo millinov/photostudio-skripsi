@@ -19,13 +19,15 @@ use App\Http\Controllers\StudioController;
 
 Route::get('/', function () {
     return view('home',[
-        "title" => "Home"
+        "title" => "Home",
+        "active" => 'home',
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
+        "active" => 'about',
         "name" => "Aplikasi sewa Studio Foto",
         "email" => "asdfg@gmail.com",
         "image" => "image-about.jpg"

@@ -7,16 +7,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "Home") ? 'active' : '' }}" href="/">Home</a>
+            <a class="nav-link {{ ($title === "Home") ? 'active' : '' }}" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "About") ? 'active' : '' }}" href="/about">About</a>
+            <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="/about">About</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link {{ ($active === "studios") ? 'active' : '' }}" href="/katalog">Katalog</a>
+              <a class="nav-link {{ ($title === "studios") ? 'active' : '' }}" href="/katalog">Katalog</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Kategori</a>
+              <a class="nav-link {{ ($title === "categories") ? 'active' : '' }}" href="/categories">Kategori</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
