@@ -27,7 +27,7 @@ class StudioFactory extends Factory
                         //     return "<p>$p</p>";
                         // }),
             'user_id' => mt_rand(2,6),
-            'category_id' => mt_rand(1,3),
+            'category_id' => mt_rand(1,4),
 
         ];
     }
