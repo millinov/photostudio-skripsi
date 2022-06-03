@@ -11,6 +11,7 @@ class StudioController extends Controller
     {
         return view('katalog', [
             "title" => "All Studio",
+            "active" => 'studios',
             // "catalogue" => Studio::all()
             "catalogue" => Studio::latest()->get()
         ]);
@@ -20,6 +21,7 @@ class StudioController extends Controller
     {
         return view('studio',[
             "title" => "Studio Foto",
+            "active" => 'studios',
             "studio" => $studio
         ]);
     }
