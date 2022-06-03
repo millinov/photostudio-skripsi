@@ -11,6 +11,7 @@ class Studio extends Model
 
     // protected $fillable =['title','owner','excerpt','desc'];
     protected $guarded =['id'];
+    protected $with =['category','user'];
 
     public function category()
     {
