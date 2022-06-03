@@ -44,6 +44,7 @@ Route::get('/categories', function()
 {
     return view('categories',[
         'title' => 'Kategori Studio',
+        'active' => "categories",
         'categories' => Category::all()
     ]);
 });
