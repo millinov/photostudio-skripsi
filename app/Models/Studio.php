@@ -30,6 +30,12 @@ class Studio extends Model
                 $query->where('slug', $category);
             });
         });
+
+        $query->when($filters['owner'] ?? false, function($query, $owner) {
+            return $query->whereHas('user' /* namanya harus sama denagn function yg ada di Model */, function($query) use($owner) {
+                $query->where('username', $owner);
+            });
+        });
     }
 
     // relasi model

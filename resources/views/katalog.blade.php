@@ -27,7 +27,7 @@
 
             <h3 class="card-title"><a href="/katalog/{{ $catalogue[0]->slug }}" class="text-decoration-none text-dark">{{ $catalogue[0]->title }}</a></h3>
 
-            <p class="mb-2"><small>Owner: <a href="/owners/{{ $catalogue[0]->user->username }}" class="text-decoration-none">{{ $catalogue[0]->user->name }}</a> in <a href="/katalog?category={{ $catalogue[0]->category->slug }}" class="text-decoration-none">{{ $catalogue[0]->category->name }}</a></small></p>
+            <p class="mb-2"><small>Owner: <a href="/katalog?owner={{ $catalogue[0]->user->username }}" class="text-decoration-none">{{ $catalogue[0]->user->name }}</a> in <a href="/katalog?category={{ $catalogue[0]->category->slug }}" class="text-decoration-none">{{ $catalogue[0]->category->name }}</a></small></p>
 
             <p class="card-text">{{ $catalogue[0]->excerpt }}</p>
 
@@ -52,8 +52,8 @@
         
                     <div class="card-body d-flex flex-column justify-content-between">
                       <div class="mb-2">
-                        <h5 class="card-title"><a href="/katalog/{{ $catalogue->slug }}" class="text-decoration-none text-dark">{{ $catalogue->title }}</a></h5>
-                        <p class="mb-2"><small>Owner: <a href="/owners/{{ $catalogue->user->username }}" class="text-decoration-none">{{ $catalogue->user->name }}</a></small></p>
+                        <h5 class="card-title"><a href="/katalog/{{ $catalogue->slug }}" class="text-decoration-none">{{ $catalogue->title }}</a></h5>
+                        <p class="mb-2"><small>Owner: <a href="/katalog?owner={{ $catalogue->user->username }}" class="text-decoration-none">{{ $catalogue->user->name }}</a></small></p>
                         <p class="card-text">{{ $catalogue->excerpt }}</p>
                       </div>
 
