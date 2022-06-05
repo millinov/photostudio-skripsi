@@ -11,7 +11,7 @@
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
                 @if (request('owner'))
-                <input type="hidden" name="owner" value="{{ request('owner') }}">
+                    <input type="hidden" name="owner" value="{{ request('owner') }}">
                 @endif
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg" placeholder="Search Studio.." name="search" value="{{ 

@@ -9,7 +9,7 @@
             @foreach ($categories as $categories)
             
             <div class="col-md-4 mb-4 card-group">
-                <a href="/categories/{{ $categories->slug }}">
+                <a href="/katalog?category={{ $categories->slug }}">
                     <div class="card bg-dark text-white">
                 
                         <img src="https://picsum.photos/500/400?random={{ $categories->id }}" class="card-img" alt="{{ $categories->name }}">
