@@ -10,7 +10,7 @@
                     {{ $studio->title }}
                 </h2>
         
-                <p class="mb-3">Owner: <a href="/owners/{{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/categories/{{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
+                <p class="mb-3">Owner: <a href="/owners/{{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/katalog?category={{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
         
                 <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid" alt="{{ $studio->category->name }}">
 
