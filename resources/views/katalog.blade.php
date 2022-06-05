@@ -2,13 +2,13 @@
 
 @section('container')
 
-    <h1 class="mb-3 text-center">{{ $title }}</h1>
+    <h1 class="mb-3 text-center fs-1">{{ $title }}</h1>
 
     <div class="row justify-content-center mb-3">
         <div class="col-md-6">
             <form action="/katalog">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search Studio.." name="search">
+                    <input type="text" class="form-control form-control-lg" placeholder="Search Studio.." name="search">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>

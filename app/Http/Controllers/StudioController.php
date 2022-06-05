@@ -9,11 +9,18 @@ class StudioController extends Controller
 {
     public function index()
     {
+        //dd(request('search')); -> buat liat kalo ada dpt searchnya
+        $studios = Studio::latest();
+
+        if (request('search')) {
+            $studios->where('title', 'like', '%' . request('search'). '%');
+        }
+
         return view('katalog', [
             "title" => "All Studio",
             "active" => 'studios',
             // "catalogue" => Studio::all()
-            "catalogue" => Studio::latest()->get()
+            "catalogue" => $studios->get()
         ]);
     }
 
