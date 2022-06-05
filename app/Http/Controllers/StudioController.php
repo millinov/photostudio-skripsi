@@ -13,7 +13,8 @@ class StudioController extends Controller
         $studios = Studio::latest();
 
         if (request('search')) {
-            $studios->where('title', 'like', '%' . request('search'). '%');
+            $studios->where('title', 'like', '%' . request('search'). '%')
+                    ->orWhere('desc', 'like', '%' . request('search'). '%');
         }
 
         return view('katalog', [
