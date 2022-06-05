@@ -15,10 +15,15 @@ class Studio extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        if (isset($filters['search']) ? $filters['search'] : false) {
-           return $query->where('title', 'like', '%' . $filters['search']. '%')
-                        ->orWhere('desc', 'like', '%' . $filters['search']. '%');
-        }
+        // if (isset($filters['search']) ? $filters['search'] : false) {
+        //    return $query->where('title', 'like', '%' . $filters['search']. '%')
+        //                 ->orWhere('desc', 'like', '%' . $filters['search']. '%');
+        // }
+
+        $query->when($filters['search'] ?? false, function($query, $search){
+            return $query->where('title', 'like', '%' . $search. '%')
+                         ->orWhere('desc', 'like', '%' . $search. '%');
+        });
     }
 
     // relasi model
