@@ -48,19 +48,3 @@ Route::get('/categories', function()
         'categories' => Category::all()
     ]);
 });
-
-Route::get('/categories/{category:slug}', function(Category $category){
-    return view('katalog',[
-        'title' => "Category: $category->name",
-        'active' => "categories",
-        'catalogue'=> $category->studios->load('category','user'),
-    ]);
-});
-
-Route::get('/owners/{owner:username}', function(User $owner){
-    return view('katalog',[
-        'title' => "Studio by $owner->name",
-        'active' => "studios",
-        'catalogue'=> $owner->studios->load('category','user'),
-    ]);
-});
