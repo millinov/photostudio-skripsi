@@ -8,7 +8,8 @@
         <div class="col-md-6">
             <form action="/katalog">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg" placeholder="Search Studio.." name="search">
+                    <input type="text" class="form-control form-control-lg" placeholder="Search Studio.." name="search" value="{{ 
+                        request('search') }}">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>
@@ -74,7 +75,7 @@
 
     @else
 
-    <p class="text-center fs-4">No post found.</p>
+    <p class="text-center fs-4">No Studio found.</p>
 
     @endif
 
