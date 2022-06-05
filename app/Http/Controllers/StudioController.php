@@ -27,7 +27,7 @@ class StudioController extends Controller
             "title" => "All Studio " .  $title,
             "active" => 'studios',
             // "catalogue" => Studio::all()
-            "catalogue" => Studio::latest()->filter(request(['search', 'category', 'owner']))->paginate(7)
+            "catalogue" => Studio::latest()->filter(request(['search', 'category', 'owner']))->paginate(7)->withQueryString()
         ]);
     }
 
