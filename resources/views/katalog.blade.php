@@ -7,6 +7,9 @@
     <div class="row justify-content-center mb-3">
         <div class="col-md-6">
             <form action="/katalog">
+                @if (request('category'))
+                    <input type="hidden" name="category" value="{{ request('category') }}">
+                @endif
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg" placeholder="Search Studio.." name="search" value="{{ 
                         request('search') }}">
@@ -49,7 +52,7 @@
         
                     <div class="card-body d-flex flex-column justify-content-between">
                       <div class="mb-2">
-                        <h5 class="card-title"><a href="/katalog/{{ $catalogue->slug }}" class="text-decoration-none">{{ $catalogue->title }}</a></h5>
+                        <h5 class="card-title"><a href="/katalog/{{ $catalogue->slug }}" class="text-decoration-none text-dark">{{ $catalogue->title }}</a></h5>
                         <p class="mb-2"><small>Owner: <a href="/owners/{{ $catalogue->user->username }}" class="text-decoration-none">{{ $catalogue->user->name }}</a></small></p>
                         <p class="card-text">{{ $catalogue->excerpt }}</p>
                       </div>
