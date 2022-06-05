@@ -13,6 +13,12 @@ class Studio extends Model
     protected $guarded =['id'];
     protected $with =['category','user'];
 
+    public function scopeFilter($query)
+    {
+
+    }
+
+    // relasi model
     public function category()
     {
         return $this->belongsTo(Category::class);
