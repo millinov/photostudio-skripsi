@@ -16,8 +16,8 @@ class Studio extends Model
     public function scopeFilter($query, array $filters)
     {
         if (isset($filters['search']) ? $filters['search'] : false) {
-           return $query->where('title', 'like', '%' . request('search'). '%')
-                        ->orWhere('desc', 'like', '%' . request('search'). '%');
+           return $query->where('title', 'like', '%' . $filters['search']. '%')
+                        ->orWhere('desc', 'like', '%' . $filters['search']. '%');
         }
     }
 
