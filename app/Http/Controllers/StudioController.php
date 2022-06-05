@@ -15,7 +15,7 @@ class StudioController extends Controller
             "title" => "All Studio",
             "active" => 'studios',
             // "catalogue" => Studio::all()
-            "catalogue" => Studio::latest()->filter()->get()
+            "catalogue" => Studio::latest()->filter(request(['search']))->get()
         ]);
     }
 
