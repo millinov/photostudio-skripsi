@@ -7,7 +7,7 @@
 
         <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
 
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal">Login</h1>
     
         <div class="w-100">
 
@@ -26,10 +26,10 @@
                 <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-
+ 
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-50 btn btn-lg btn-primary fs-4" type="submit">LOGIN</button>
 
     </form>
 
