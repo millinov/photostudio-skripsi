@@ -4,14 +4,12 @@
 
 <div class="row justify-content-center">
     <div class="col-lg-4">
-
-
-
-        <main class="form-signin m-auto card p-4" style="width: 380px">
+        <main class="form-signin m-auto card p-4">
             <form class="d-flex flex-column align-items-center">
         
                 {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
-
+                
+                {{-- Buat bikin alert setelah register --}}
                 @if (session()->has('success'))
 
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
