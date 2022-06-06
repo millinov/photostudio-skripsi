@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-6">
         <main class="form-registration m-auto card p-4">
-            <form class="d-flex flex-column align-items-center">
+            <form class="d-flex flex-column align-items-center" action="/register" method="post">
         
                 <h1 class="h3 mb-3 fw-normal">Registration Form</h1>
             
