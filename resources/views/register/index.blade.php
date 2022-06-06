@@ -6,6 +6,7 @@
     <div class="col-lg-6">
         <main class="form-registration m-auto card p-4">
             <form class="d-flex flex-column align-items-center" action="/register" method="post">
+                @csrf
         
                 <h1 class="h3 mb-3 fw-normal">Registration Form</h1>
             
