@@ -5,9 +5,9 @@
 <main class="form-signin m-auto card p-4" style="width: 380px">
     <form class="d-flex flex-column align-items-center">
 
-        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
 
-        <h1 class="h3 mb-3 fw-normal">Login</h1>
+        <h1 class="h3 mb-5 fw-normal">Login</h1>
     
         <div class="w-100">
 
