@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function index()
+    public function create()
     {
         return view('register.index', [
             "title" => 'Register',
