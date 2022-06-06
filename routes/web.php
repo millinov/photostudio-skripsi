@@ -48,3 +48,7 @@ Route::get('/categories', function()
         'categories' => Category::all()
     ]);
 });
+
+// untuk login
+
+Route::get('/sign-in');
