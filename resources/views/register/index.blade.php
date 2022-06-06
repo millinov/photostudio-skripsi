@@ -13,7 +13,7 @@
                 <div class="w-100">
         
                     <div class="form-floating">
-                        <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" style="margin-bottom: -1px;" required>
+                        <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" style="margin-bottom: -1px;" required value="{{ old('name') }}">
                         <label for="name">Name</label>
 
                         @error('name')
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" name="username" class="form-control  @error('username') is-invalid @enderror" id="username" placeholder="Username" style="margin-bottom: -1px;" required>
+                        <input type="text" name="username" class="form-control  @error('username') is-invalid @enderror" id="username" placeholder="Username" style="margin-bottom: -1px;" required value="{{ old('username') }}">
                         <label for="username">Userame</label>
 
                         @error('username')
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-floating">
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" style="margin-bottom: -1px;" required>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" style="margin-bottom: -1px;" required value="{{ old('email') }}">
                         <label for="email">Email address</label>
 
                         @error('email')
