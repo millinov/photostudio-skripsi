@@ -51,4 +51,4 @@ Route::get('/categories', function()
 
 // untuk login
 
-Route::get('/sign-in');
+Route::get('/sign-in', [LoginController::class, 'index']);
