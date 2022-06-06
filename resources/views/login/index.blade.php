@@ -3,7 +3,7 @@
 @section('container')
 
 <div class="row justify-content-center">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
         <main class="form-signin m-auto card p-4">
             <form class="d-flex flex-column align-items-center">
         
