@@ -5,7 +5,8 @@
 <div class="row justify-content-center">
     <div class="col-lg-4 mt-3">
         <main class="form-signin m-auto card p-4">
-            <form class="d-flex flex-column align-items-center">
+            <form class="d-flex flex-column align-items-center" action="/login" method="post">
+                @csrf
         
                 {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
                 
@@ -24,13 +25,13 @@
                 <div class="w-100">
         
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" autofocus required>
+                        <label for="email">Email address</label>
                     </div>
         
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                        <label for="password">Password</label>
                     </div>
         
                     <div class="checkbox mb-3 mt-1">
