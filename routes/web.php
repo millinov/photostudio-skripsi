@@ -41,7 +41,6 @@ Route::get('/katalog', [StudioController::class, 'index']);
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'show']);
 
 // halaman kategori
-
 Route::get('/categories', function()
 {
     return view('categories',[
