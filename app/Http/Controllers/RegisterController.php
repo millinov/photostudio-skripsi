@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        return view('register.index', [
+        return view('register.formRegister', [
             "title" => 'Register',
             "active" => 'register'
         ]);
