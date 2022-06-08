@@ -19,6 +19,15 @@
                     </div>
                     
                 @endif
+
+                @if (session()->has('loginError'))
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('loginError') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                    
+                @endif
         
                 <h1 class="h3 mb-5 fw-normal">Login</h1>
             
