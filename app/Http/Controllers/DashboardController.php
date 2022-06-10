@@ -8,6 +8,9 @@ class DashboardController extends Controller
 {
     public function viewDashboard()
     {
-        return view('dashboard.userPage');
+        return view('dashboard.userPage',[
+            'title' => 'Dashboard',
+            'active' => 'dashboard'
+        ]);
     }
 }
