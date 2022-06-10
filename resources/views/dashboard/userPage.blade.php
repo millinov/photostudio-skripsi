@@ -8,30 +8,30 @@
         <h1 class="h2">Welcome Back, {{ auth()->user()->name }}</h1>
     </div>
 
-    <div class="row">
+    <div class="row d-flex justify-content-center flex-wrap flex-md-nowrap w-100">
         
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse border rounded-start">
-            <div class="position-sticky pt-3 pb-3">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse ms-2">
+            <div class="position-sticky pt-3 pb-3 border rounded-start">
                 <ul class="nav flex-column">
                     
                     <li class="nav-item">
                         <a class="nav-link active text-dark" aria-current="page" href="#">
                         <span data-feather="home" class="align-text-bottom text-dark"></span>
-                        Dashboard
+                        Your Profile
                         </a>
                     </li>
         
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="#">
                         <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                        Studio
-                        </a>
+                        Wishlist
+                        </a> 
                     </li>
                 
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="#">
                         <span data-feather="file" class="align-text-bottom"></span>
-                        Orders
+                        History
                         </a>
                     </li>
         
@@ -39,9 +39,11 @@
             </div>
         </nav>
   
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 border rounded-end">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex justify-content-center border rounded-end">
         
-            
+            <div class="">
+                
+            </div>
             
         </main>
     </div>
