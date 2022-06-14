@@ -3,9 +3,9 @@
         <ul class="nav flex-column">
             
             <li class="nav-item">
-                <a class="nav-link active text-dark" aria-current="page" href="#">
+                <a class="nav-link active text-dark" aria-current="page" href="/dashboard">
                 <i class="bi bi-file-person me-2"></i>
-                Your Profile
+                My Profile
                 </a>
             </li>
 
@@ -25,9 +25,9 @@
 
             <div class="border-top mt-2">
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-dark" href="#">
+                    <a class="nav-link text-dark" href="/dashboard/studio">
                     <i class="bi bi-camera me-2"></i>
-                    Your Studio
+                    My Studio
                     </a>
                 </li>
             </div>
