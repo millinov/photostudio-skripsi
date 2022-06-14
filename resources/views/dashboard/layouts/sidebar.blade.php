@@ -4,24 +4,33 @@
             
             <li class="nav-item">
                 <a class="nav-link active text-dark" aria-current="page" href="#">
-                <span data-feather="home" class="align-text-bottom text-dark"></span>
+                <i class="bi bi-file-person me-2"></i>
                 Your Profile
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link text-dark" href="#">
-                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                <i class="bi bi-cart4 me-2"></i>
                 Wishlist
                 </a> 
             </li>
         
             <li class="nav-item">
                 <a class="nav-link text-dark" href="#">
-                <span data-feather="file" class="align-text-bottom"></span>
+                <i class="bi bi-clock-history me-2"></i>
                 History
                 </a>
             </li>
+
+            <div class="border-top mt-2">
+                <li class="nav-item mt-2">
+                    <a class="nav-link text-dark" href="#">
+                    <i class="bi bi-camera me-2"></i>
+                    Your Studio
+                    </a>
+                </li>
+            </div>
 
         </ul>
     </div>
