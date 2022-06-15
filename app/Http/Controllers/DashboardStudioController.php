@@ -16,7 +16,8 @@ class DashboardStudioController extends Controller
     {
         return view('dashboard.studio.index', [
             'title' => 'Dashboard',
-            'active' => 'dashboard'
+            'active' => 'dashboard',
+            'studio' => Studio::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
