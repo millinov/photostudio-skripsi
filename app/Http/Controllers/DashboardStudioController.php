@@ -14,7 +14,10 @@ class DashboardStudioController extends Controller
      */
     public function index()
     {
-        return view('dashboard.studio.index');
+        return view('dashboard.studio.index', [
+            'title' => 'Dashboard',
+            'active' => 'dashboard'
+        ]);
     }
 
     /**
