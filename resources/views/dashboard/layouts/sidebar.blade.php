@@ -1,9 +1,9 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse ms-2">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar navbar navbar-light collapse ms-2">
     <div class="position-sticky pt-3 pb-3 border rounded-start">
-        <ul class="nav flex-column">
+        <ul class="nav navbar-nav flex-column px-3">
             
             <li class="nav-item">
-                <a class="nav-link active text-dark" aria-current="page" href="/dashboard">
+                <a class="nav-link active {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
                 <i class="bi bi-file-person me-2"></i>
                 My Profile
                 </a>
@@ -25,7 +25,7 @@
 
             <div class="border-top mt-2">
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-dark" href="/dashboard/studio">
+                    <a class="nav-link {{ Request::is('dashboard/studio') ? 'active' : '' }}" href="/dashboard/studio">
                     <i class="bi bi-camera me-2"></i>
                     My Studio
                     </a>
