@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true
         ]);
 
-        User::factory(5)->create();
+        User::factory(10)->create();
 
         Category::create([
             'name' => 'Formal',
@@ -47,7 +47,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'modelling'
         ]);
 
-        Studio::factory(20)->create();
+        //Studio::factory(10)->create();
+        $max = 11;
+        for ($i=1; $i < $max; $i++) { 
+            Studio::factory()->create();
+        }
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
