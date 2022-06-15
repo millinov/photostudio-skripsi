@@ -60,3 +60,4 @@ Route::get('/register', [RegisterController::class, 'create'])->middleware('gues
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'viewDashboard'])->middleware('auth');
+Route::resource('/dashboard/studio', DashboardStudioController::class)->middleware('auth');
