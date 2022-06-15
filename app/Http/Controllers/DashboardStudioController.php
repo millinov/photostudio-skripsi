@@ -14,7 +14,7 @@ class DashboardStudioController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.studio.index');
     }
 
     /**
