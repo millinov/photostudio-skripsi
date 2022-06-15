@@ -47,12 +47,36 @@
                         @enderror
                         
                     </div>
+
+                    <div class="form-floating">
+                        <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" placeholder="+628xxxxxx" required style="margin-bottom: -1px;" value="{{ old('phone_number') }}">
+                        <label for="password">Phone Number</label>
+
+                        @error('phone_number')
+                            <div class="invalid-feedback mb-2">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        
+                    </div>
         
                     <div class="form-floating">
-                        <input type="password" name="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" required style="margin-bottom: -1px;">
                         <label for="password">Password</label>
 
                         @error('password')
+                            <div class="invalid-feedback mb-2">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="password" name="password_confirmation" class="form-control rounded-bottom @error('password_confirmation') is-invalid @enderror" id="password_confirmation" placeholder="Confirm Password" required>
+                        <label for="password_confirmation">Confirm Password</label>
+
+                        @error('password_confirmation')
                             <div class="invalid-feedback mb-2">
                                 {{ $message }}
                             </div>
