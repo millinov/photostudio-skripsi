@@ -27,6 +27,7 @@ class StudioFactory extends Factory
                         //     return "<p>$p</p>";
                         // })
                         ->implode(''),
+            'address' => $this->faker->address(),
             'user_id' => $this->faker->unique()->numberBetween(2,11),
             'category_id' => mt_rand(1,4),
 
