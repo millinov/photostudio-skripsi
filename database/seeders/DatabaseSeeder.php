@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Millinov Admiral',
             'username' => 'siglakavi',
             'email' => 'milinovadmiral@gmail.com',
+            'phone_number' => '0218848460',
             'password' => bcrypt('12345'),
             'is_admin' => true
         ]);
