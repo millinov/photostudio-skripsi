@@ -29,7 +29,7 @@
                 <input type="text" readonly class="form-control" id="title" name="title" placeholder="Title" value="--">
             </div>
 
-            <button type="button" class="btn btn-primary my-3">Edit Studio Profile</button>
+            <button type="button" class="btn text-white border-0 my-3" style="background-color: #7388E4">Edit Studio Profile</button>
 
         </form>
 
