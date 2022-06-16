@@ -10,7 +10,14 @@
                     {{ $studio->title }}
                 </h2>
         
-                <p class="mb-3">Owner: <a href="/katalog?owner={{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/katalog?category={{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
+                <div class="d-flex align-items-center mt-1 mb-3">
+                    <p class="text-box align-middle my-0 fs-6">Owner: <a href="/katalog?owner={{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/katalog?category={{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
+
+                    @if($studio->user->id === auth()->user()->id)
+                        <a href="/dashboard/studio" class="btn btn-primary btn-sm text-decoration-none ms-2">Edit Studio</a>
+                    @endif
+
+                </div>
         
                 <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid" alt="{{ $studio->category->name }}">
 
