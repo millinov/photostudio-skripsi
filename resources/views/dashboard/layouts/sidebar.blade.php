@@ -1,5 +1,5 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar navbar navbar-light collapse ms-2 py-0 px-3" >
-    <div class="position-sticky pt-3 pb-3 border rounded-start h-100" style="background-color: #e3f2fd;">
+    <div class="position-sticky pt-3 pb-3 border rounded-start h-100" style="background-color: #B7F9F5;">
         <ul class="nav navbar-nav flex-column px-3">
             
             <li class="nav-item">
