@@ -5,6 +5,17 @@
 <div class="container">
 
 
+    @if ($studio === null)
+
+    <div class="row w-100 py-4 px-3 d-flex justify-content-center">
+
+        <h5 class="text-center">No Studio exist yet.</h5>
+
+    </div>
+        
+    @else
+
+    {{-- detail studio --}}
     <div class="row w-100 py-4 px-3">
 
         <div class="col-lg-6 px-3 d-flex flex-column justify-content-center">
@@ -80,6 +91,7 @@
         </div>
     </div>
     
+    {{-- list booking --}}
     <div class="row w-100 py-4 px-3">
     
         <h3>Active Booking</h3>
@@ -117,6 +129,10 @@
         </div>
     
     </div>
+        
+    @endif
+
+    
 
 </div>
     
