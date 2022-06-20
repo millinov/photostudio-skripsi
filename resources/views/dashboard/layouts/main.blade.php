@@ -8,7 +8,7 @@
         <h1 class="h2">Welcome Back, {{ auth()->user()->name }}</h1>
     </div>
 
-    <div class="row d-flex justify-content-center flex-wrap flex-md-nowrap w-100">
+    <div class="row d-flex justify-content-center flex-wrap flex-md-nowrap w-100" style="min-height: 600px">
         
         @include('dashboard.layouts.sidebar')
   
