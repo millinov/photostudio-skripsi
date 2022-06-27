@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Order;
+use App\Models\Review;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -60,5 +61,10 @@ class Studio extends Model
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
