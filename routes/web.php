@@ -36,9 +36,9 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/katalog', [StudioController::class, 'index']);
+Route::get('/katalog', [StudioController::class, 'browseIndex']);
 // halaman single post
-Route::get('/katalog/{studio:slug}', [StudioController::class, 'show']);
+Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
 
 // halaman kategori
 Route::get('/categories', function()
@@ -60,4 +60,4 @@ Route::get('/register', [RegisterController::class, 'create'])->middleware('gues
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'viewDashboard'])->middleware('auth');
-Route::resource('/dashboard/studio', DashboardStudioController::class)->middleware('auth');
+Route::resource('/dashboard/studio', StudioController::class)->middleware('auth');
