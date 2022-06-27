@@ -9,7 +9,7 @@ use App\Models\User;
 
 class StudioController extends Controller
 {
-    public function index()
+    public function browseIndex()
     {
         //dd(request('search')); -> buat liat kalo ada dpt searchnya
         $title = "";
@@ -31,12 +31,87 @@ class StudioController extends Controller
         ]);
     }
 
-    public function show(Studio $studio)
+    public function showPage(Studio $studio)
     {
         return view('studio',[
             "title" => "Studio Foto",
             "active" => 'studios',
             "studio" => $studio
         ]);
+    }
+
+    public function index()
+    {
+        return view('dashboard.studio.index', [
+            'title' => 'Dashboard',
+            'active' => 'dashboard',
+            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Studio  $studio
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Studio $studio)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Studio  $studio
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Studio $studio)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Studio  $studio
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Studio $studio)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Studio  $studio
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Studio $studio)
+    {
+        //
     }
 }
