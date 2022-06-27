@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudioController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardStudioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,25 +37,17 @@ Route::get('/about', function () {
 Route::get('/katalog', [StudioController::class, 'browseIndex']);
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
+Route::resource('/dashboard/studio', StudioController::class)->middleware('auth');
 
 // halaman kategori
-Route::get('/categories', function()
-{
-    return view('categories',[
-        'title' => 'Kategori Studio',
-        'active' => "categories",
-        'categories' => Category::all()
-    ]);
-});
+Route::get('/categories', [CategoryController::class, 'show']);
 
 // untuk login dan logout
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
-
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);
 // untuk register
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [UserController::class, 'register'])->middleware('guest');
+Route::post('/register', [UserController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'viewDashboard'])->middleware('auth');
-Route::resource('/dashboard/studio', StudioController::class)->middleware('auth');
+Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
