@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('desc');
             $table->text('address');
             $table->timestamp('published_at')->nullable();
+            $table->float('total_rating');
             $table->timestamps();
         });
     }
