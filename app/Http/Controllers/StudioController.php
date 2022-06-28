@@ -52,7 +52,8 @@ class StudioController extends Controller
         return view('dashboard.studio.index', [
             'title' => 'Dashboard',
             'active' => 'dashboard',
-            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
+            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -74,7 +75,7 @@ class StudioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
