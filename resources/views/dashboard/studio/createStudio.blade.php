@@ -18,7 +18,7 @@
                     @csrf
 
                     <div class="modal-body">
-                        <div class="col-lg-8">
+                        <div class="col-lg-7">
 
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
