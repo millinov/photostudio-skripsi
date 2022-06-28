@@ -7,10 +7,11 @@ use App\Models\Review;
 use App\Models\Favorite;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Studio extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // protected $fillable =['title','owner','excerpt','desc'];
     protected $guarded =['id'];
@@ -46,6 +47,15 @@ class Studio extends Model
                 $query->where('username', $owner);
             });
         });
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 
     // relasi model
