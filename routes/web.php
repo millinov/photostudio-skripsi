@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudioController;
@@ -38,6 +37,7 @@ Route::get('/katalog', [StudioController::class, 'browseIndex']);
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
 Route::resource('/dashboard/studio', StudioController::class)->middleware('auth');
+Route::get('/dashboard/checkSlug', [StudioController::class, 'createSlug']);
 
 // halaman kategori
 Route::get('/categories', [CategoryController::class, 'show']);
