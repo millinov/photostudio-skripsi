@@ -30,6 +30,21 @@
                                 <input type="text" class="form-control" id="slug" name="slug">
                             </div>
 
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-select" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id}}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="desc" class="form-label">Description</label>
+                                <input id="desc" type="hidden" name="desc">
+                                <trix-editor input="desc"></trix-editor>
+                            </div>
+
                         </div>
                     </div>
 
