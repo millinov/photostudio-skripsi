@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Studio;
 use App\Models\User;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class StudioController extends Controller
 {
@@ -38,6 +39,12 @@ class StudioController extends Controller
             "active" => 'studios',
             "studio" => $studio
         ]);
+    }
+
+    public function createSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Studio::class, 'slug',  $request->title);
+        return response()->json(['slug' => $slug]);
     }
 
     public function index()
