@@ -21,8 +21,8 @@
                         <div class="col-lg-7">
 
                             <div class="mb-3">
-                                <label for="title" class="form-label">Title</label>
-                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" required value="{{ old('title') }}">
+                                <label for="title" class="form-label">Studio Name</label>
+                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title') }}" required>
                                 
                                 @error('title')
                                     <div class="invalid-feedback mb-2">
@@ -33,7 +33,7 @@
 
                             <div class="mb-3">
                                 <label for="slug" class="form-label">Slug</label>
-                                <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" required value="{{ old('slug') }}">
+                                <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}" required>
 
                                 @error('slug')
                                     <div class="invalid-feedback mb-2">
@@ -47,11 +47,20 @@
                                 <select class="form-select" name="category_id" required>
                                     <option value="" selected>Select Category --</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id}}">{{ $category->name }}</option>
+                                        @if (old('category_id') == $category->id)
+                                            <option selected value="{{ $category->id}}">{{ $category->name }}</option>
+                                        @else
+                                            <option value="{{ $category->id}}">{{ $category->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
+                            </div>
 
-                                @error('category')
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" id="address" value="{{ old('address') }}" required>
+                                
+                                @error('address')
                                     <div class="invalid-feedback mb-2">
                                         {{ $message }}
                                     </div>
@@ -60,14 +69,11 @@
 
                             <div class="mb-3">
                                 <label for="desc" class="form-label">Description</label>
-                                <input id="desc" type="hidden" name="desc" required value="{{ old('desc') }}">
+                                    @error('desc')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                <input id="desc" type="hidden" name="desc" value="{{ old('desc') }}">
                                 <trix-editor input="desc"></trix-editor>
-
-                                @error('desc')
-                                    <div class="invalid-feedback mb-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
                             </div>
 
                         </div>
@@ -101,5 +107,6 @@
     document.addEventListener('trix-file-accept', function(e) {  
         e.preventDefault();
     });
-    
+
+    console.log({{ old('desc') }})
 </script>
