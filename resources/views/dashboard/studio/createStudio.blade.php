@@ -5,7 +5,7 @@
         Upload your studio
     </button>
 
-    <div class="modal fade" id="createStudioFormModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="createStudioFormModal" name="createStudioFormModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
 
@@ -14,7 +14,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="post" action="/dashboard/studio">
+                <form method="post" action="/dashboard/studio" id="createStudioForm">
                     @csrf
 
                     <div class="modal-body">
@@ -22,31 +22,54 @@
 
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="title" name="title">
+                                <input type="text" name="title" class="form-controlp @error('title') is-invalid @enderror" id="title" required value="{{ old('title') }}">
+                                
+                                @error('title')
+                                    <div class="invalid-feedback mb-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="slug" class="form-label">Slug</label>
-                                <input type="text" class="form-control" id="slug" name="slug">
+                                <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" required value="{{ old('slug') }}">
+
+                                @error('slug')
+                                    <div class="invalid-feedback mb-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category</label>
-                                <select class="form-select" name="category_id">
+                                <select class="form-select" name="category_id" required>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id}}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+
+                                @error('category')
+                                    <div class="invalid-feedback mb-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="desc" class="form-label">Description</label>
-                                <input id="desc" type="hidden" name="desc">
+                                <input id="desc" type="hidden" name="desc" required>
                                 <trix-editor input="desc"></trix-editor>
+
+                                @error('desc')
+                                    <div class="invalid-feedback mb-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                         </div>
-                    </div>
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Create Studio</button>
@@ -63,9 +86,11 @@
 
     const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
+    const createStudioForm = document.getElementById("createStudioForm");
+    const createStudioFormModal = document.getElementById('createStudioFormModal');
 
     title.addEventListener('change', function() {
         fetch('/dashboard/checkSlug?title=' + title.value).then(response => response.json()).then(data => slug.value = data.slug);
     });
-
+    
 </script>
