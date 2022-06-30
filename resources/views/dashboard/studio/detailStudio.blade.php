@@ -1,6 +1,15 @@
 <div class="row w-100 py-4 px-3">
 
+    @if (session()->has('success'))
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+    </div>
+        
+    @endif
+
     <div class="col-lg-6 px-3 d-flex flex-column justify-content-center">
+        
 
         <form action="">
             @csrf
