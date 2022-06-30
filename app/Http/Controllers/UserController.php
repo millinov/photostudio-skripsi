@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Studio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -78,7 +79,8 @@ class UserController extends Controller
     {
         return view('dashboard.userPage',[
             'title' => 'Dashboard',
-            'active' => 'dashboard'
+            'active' => 'dashboard',
+            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
         ]);
     }
 }
