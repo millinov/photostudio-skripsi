@@ -22,7 +22,7 @@
 
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" name="title" class="form-controlp @error('title') is-invalid @enderror" id="title" required value="{{ old('title') }}">
+                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" required value="{{ old('title') }}">
                                 
                                 @error('title')
                                     <div class="invalid-feedback mb-2">
@@ -45,6 +45,7 @@
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category</label>
                                 <select class="form-select" name="category_id" required>
+                                    <option value="" selected>Select Category --</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id}}">{{ $category->name }}</option>
                                     @endforeach
@@ -59,7 +60,7 @@
 
                             <div class="mb-3">
                                 <label for="desc" class="form-label">Description</label>
-                                <input id="desc" type="hidden" name="desc" required>
+                                <input id="desc" type="hidden" name="desc" required value="{{ old('desc') }}">
                                 <trix-editor input="desc"></trix-editor>
 
                                 @error('desc')
@@ -86,11 +87,19 @@
 
     const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
-    const createStudioForm = document.getElementById("createStudioForm");
-    const createStudioFormModal = document.getElementById('createStudioFormModal');
 
     title.addEventListener('change', function() {
         fetch('/dashboard/checkSlug?title=' + title.value).then(response => response.json()).then(data => slug.value = data.slug);
+    });
+
+    @if($errors->any())
+        $(document).ready(function(){
+                $("#createStudioFormModal").modal('show');
+        });
+    @endif
+
+    document.addEventListener('trix-file-accept', function(e) {  
+        e.preventDefault();
     });
     
 </script>
