@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Models\Studio;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Studio;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class StudioController extends Controller
@@ -79,8 +81,18 @@ class StudioController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:studios',
             'category_id' => 'required',
+            'address' => 'required',
             'desc' => 'required'
         ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit($request->desc, 100, '...');
+        $validatedData['published_at'] = Carbon::now()->toDateTimeString();
+
+        Studio::create($validatedData);
+
+        return redirect('dashboard/studio')->with('success', 'Studio has been made!');
+
     }
 
     /**
