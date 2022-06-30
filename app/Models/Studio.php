@@ -58,6 +58,11 @@ class Studio extends Model
         ];
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     // relasi model
     public function category()
     {
