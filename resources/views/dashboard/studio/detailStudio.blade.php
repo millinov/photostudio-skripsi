@@ -79,7 +79,13 @@
     
                 <div class="mt-3">
                     <button type="button" class="btn text-white border-0 my-3" style="background-color: #7388E4">Edit Studio</button>
-                    <button type="button" class="btn btn-warning">Delete Studio</button>
+                    
+                    <form action="/dashboard/studio/{{ $studio->slug }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-warning" onclick="return confirm('Are you sure you want to delete your studio?')">Delete Studio</button>
+                    </form>
+
                 </div>
     
                 <a href="/katalog/{{ $studio->slug }}" class="text-decoration-none">Look at Studio Page</a>
