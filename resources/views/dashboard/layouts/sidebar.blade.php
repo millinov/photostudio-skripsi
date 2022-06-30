@@ -25,7 +25,7 @@
 
             <div class="border-top mt-2">
                 <li class="nav-item mt-2">
-                    <a class="nav-link {{ Request::is('dashboard/studio') ? 'active' : '' }}" href="/dashboard/studio">
+                    <a class="nav-link {{ Request::is('dashboard/studio') ? 'active' : '' }}" href="@if($studio == null) /dashboard/studio @else /dashboard/studio/{{ $studio->slug }} @endif">
                     <i class="bi bi-camera me-2"></i>
                     My Studio
                     </a>
