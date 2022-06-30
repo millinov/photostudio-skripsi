@@ -32,7 +32,7 @@
 
             <p class="mb-2"><small>Owner: <a href="/katalog?owner={{ $catalogue[0]->user->username }}" class="text-decoration-none">{{ $catalogue[0]->user->name }}</a> in <a href="/katalog?category={{ $catalogue[0]->category->slug }}" class="text-decoration-none">{{ $catalogue[0]->category->name }}</a></small></p>
 
-            <p class="card-text">{{ $catalogue[0]->excerpt }}</p>
+            <p class="card-text">{!! $catalogue[0]->excerpt !!}</p>
 
             <a href="/katalog/{{ $catalogue[0]->slug }}" class="text-decoration-none btn btn-primary mb-2">Read more</a>
 
@@ -57,7 +57,7 @@
                       <div class="mb-2">
                         <h5 class="card-title"><a href="/katalog/{{ $item->slug }}" class="text-decoration-none text-dark">{{ $item->title }}</a></h5>
                         <p class="mb-2"><small>Owner: <a href="/katalog?owner={{ $item->user->username }}" class="text-decoration-none">{{ $item->user->name }}</a></small></p>
-                        <p class="card-text">{{ $item->excerpt }}</p>
+                        <p class="card-text">{!! $item->excerpt !!}</p>
                       </div>
 
                       <div>
