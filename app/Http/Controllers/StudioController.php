@@ -103,7 +103,12 @@ class StudioController extends Controller
      */
     public function show(Studio $studio)
     {
-        //
+        return view('dashboard.studio.index', [
+            'title' => 'Dashboard',
+            'active' => 'dashboard',
+            'studio' => $studio,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -137,6 +142,8 @@ class StudioController extends Controller
      */
     public function destroy(Studio $studio)
     {
-        //
+        $studio->delete();
+
+        return redirect('dashboard/studio')->with('success', 'Studio has been deleted!');
     }
 }
