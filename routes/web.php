@@ -36,7 +36,7 @@ Route::get('/about', function () {
 Route::get('/katalog', [StudioController::class, 'browseIndex']);
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
-Route::resource('/dashboard/studio', StudioController::class)->middleware('auth');
+Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('auth');
 Route::get('/dashboard/checkSlug', [StudioController::class, 'createSlug']);
 
 // halaman kategori
