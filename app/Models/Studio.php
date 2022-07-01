@@ -63,6 +63,11 @@ class Studio extends Model
         return 'slug';
     }
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     // relasi model
     public function category()
     {
