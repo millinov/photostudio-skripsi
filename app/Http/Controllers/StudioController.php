@@ -91,7 +91,9 @@ class StudioController extends Controller
 
         Studio::create($validatedData);
 
-        return redirect('dashboard/studio')->with('success', 'Studio has been made!');
+        $studio = Studio::where('user_id', auth()->user()->id)->latest()->first();
+
+        return redirect()->route('studio', [$studio])->with('success', 'Studio has been made!');
 
     }
 
@@ -119,7 +121,7 @@ class StudioController extends Controller
      */
     public function edit(Studio $studio)
     {
-        //
+        
     }
 
     /**
@@ -131,7 +133,19 @@ class StudioController extends Controller
      */
     public function update(Request $request, Studio $studio)
     {
-        //
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'address' => 'required',
+            'desc' => 'required'
+        ];
+
+        if($request->slug != $studio->slug)
+        {
+            $rules['slug'] = 'required|unique:studios';
+        }
+
+        $validatedData = $request->validate($rules);
     }
 
     /**
