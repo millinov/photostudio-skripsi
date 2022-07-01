@@ -146,6 +146,14 @@ class StudioController extends Controller
         }
 
         $validatedData = $request->validate($rules);
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit($request->desc, 100, '...');
+
+        Studio::where('id', $studio->id)
+                ->update($validatedData);
+
+        return redirect()->route('studio', [$studio])->with('success', 'Studio has been updated!');
     }
 
     /**
