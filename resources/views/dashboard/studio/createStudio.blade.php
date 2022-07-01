@@ -1,5 +1,12 @@
 <div class="row w-100 py-4 px-3 d-flex flex-column justify-content-center align-items-center">
 
+    @if (session()->has('success'))
+
+    <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+        {{ session('success') }}
+    </div>
+        
+    @endif
     <h5 class="text-center">No studio in here yet.</h5>
     <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#createStudioFormModal">
         Upload your studio
@@ -108,5 +115,4 @@
         e.preventDefault();
     });
 
-    console.log({{ old('desc') }})
 </script>
