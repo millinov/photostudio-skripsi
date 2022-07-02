@@ -1,3 +1,6 @@
+
+
+
 <div class="row w-100 py-4 px-3 d-flex flex-column justify-content-center align-items-center">
 
     @if (session()->has('success'))
@@ -21,10 +24,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="post" action="/dashboard/studio" id="createStudioForm">
+                <form method="post" action="/dashboard/studio" id="createStudioForm" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="modal-body">
+                    <div class="modal-body row">
                         <div class="col-lg-7">
 
                             <div class="mb-3">
@@ -85,9 +88,24 @@
 
                         </div>
 
+                        <div class="col-lg-5">
+                            <div class="mb-3">
+                                <label for="images" class="form-label">Studio's image</label>
+                                <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple>
+
+                                @error('images')
+                                    <div class="invalid-feedback mb-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Create Studio</button>
                     </div>
+
+
                 </form>
 
             </div>
