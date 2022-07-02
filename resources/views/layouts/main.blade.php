@@ -25,6 +25,12 @@
       trix-toolbar [data-trix-button-group="file-tools"] {
         display: none;
       }
+
+      .images-preview-div img
+      {
+          padding: 10px;
+          max-width: 100%;
+      }
     </style>
 
   </head>
