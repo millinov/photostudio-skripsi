@@ -51,12 +51,22 @@ class StudioController extends Controller
 
     public function index()
     {
-        return view('dashboard.studio.index', [
-            'title' => 'Dashboard',
-            'active' => 'dashboard',
-            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first(),
-            'categories' => Category::all()
-        ]);
+        $studio = Studio::where('user_id', auth()->user()->id)->latest()->first();
+
+        if($studio === null)
+        {
+            return view('dashboard.studio.index', [
+                'title' => 'Dashboard',
+                'active' => 'dashboard',
+                'studio' => $studio,
+                'categories' => Category::all()
+            ]);
+        }
+        else
+        {
+            return redirect()->route('studio', [$studio]);
+        }
+
     }
 
     /**
@@ -140,9 +150,12 @@ class StudioController extends Controller
             'desc' => 'required'
         ];
 
+        $newSlug = $studio->slug;
+
         if($request->slug != $studio->slug)
         {
             $rules['slug'] = 'required|unique:studios';
+            $newSlug = $request->slug;
         }
 
         $validatedData = $request->validate($rules);
@@ -153,7 +166,7 @@ class StudioController extends Controller
         Studio::where('id', $studio->id)
                 ->update($validatedData);
 
-        return redirect()->route('studio', [$studio])->with('success', 'Studio has been updated!');
+        return redirect()->route('studio', $newSlug)->with('success', 'Studio has been updated!');
     }
 
     /**
