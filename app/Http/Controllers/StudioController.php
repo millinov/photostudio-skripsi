@@ -6,9 +6,11 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Studio;
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Arr;
 
 class StudioController extends Controller
 {
@@ -87,24 +89,37 @@ class StudioController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->file('image')->store('studio-images');
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:studios',
             'category_id' => 'required',
             'address' => 'required',
+            'images' => 'required',
+            'images.*' => 'required|image||mimes:jpeg,png,jpg,gif,svg|max:10240',
             'desc' => 'required'
         ]);
-
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit($request->desc, 100, '...');
         $validatedData['published_at'] = Carbon::now()->toDateTimeString();
 
-        Studio::create($validatedData);
+        $validatedStudio = Arr::except($validatedData, ['image']);
+        $validatedImage = [];
 
+        Studio::create($validatedStudio);
         $studio = Studio::where('user_id', auth()->user()->id)->latest()->first();
 
-        return redirect()->route('studio', [$studio])->with('success', 'Studio has been made!');
+        if($request->images)
+        {
+            foreach($request->images as $image)
+            {
+                $validatedImage['path'] = $image->store('studio-images');
+                $validatedImage['studio_id'] = $studio->id;
+                Image::create($validatedImage);
+            }
+        }
 
+        return redirect()->route('studio', [$studio])->with('success', 'Studio has been made!');
     }
 
     /**
@@ -177,6 +192,8 @@ class StudioController extends Controller
      */
     public function destroy(Studio $studio)
     {
+        $image = Image::where('studio_id', $studio->id);
+        $image->delete();
         $studio->delete();
 
         return redirect('dashboard/studio')->with('success', 'Studio has been deleted!');
