@@ -47,7 +47,7 @@ Route::get('/history', function () {
 });
 
 
-Route::get('/katalog', [StudioController::class, 'browseIndex']);
+Route::get('/katalog', [StudioController::class, 'katalog']);
 
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
