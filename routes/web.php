@@ -16,7 +16,6 @@ use App\Http\Controllers\StudioController;
 |
 */
 
-Route::get('/katalog', [StudioController::class, 'browseIndex']);
 Route::get('/', function () {
     return view('home',[
         "title" => "Home",
@@ -45,6 +44,22 @@ Route::get('/history', function () {
         "active" => 'history',
     ]);
 });
+
+Route::get('/rating', function () {
+    return view('rating', [
+        "title" => "rating",
+        "active" => 'rating',
+    ]);
+});
+
+Route::get('/wishlist', function () {
+    return view('wishlist', [
+        "title" => "wishlist",
+        "active" => 'wishlist',
+    ]);
+});
+
+
 
 
 Route::get('/katalog', [StudioController::class, 'browseIndex']);
