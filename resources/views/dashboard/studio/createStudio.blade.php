@@ -90,8 +90,8 @@
 
                         <div class="col-lg-5">
                             <div class="mb-3">
-                                <label for="images" class="form-label">Studio's image</label>
-                                <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple>
+                                <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple >
+
 
                                 @error('images')
                                     <div class="invalid-feedback mb-2">
@@ -132,5 +132,6 @@
     document.addEventListener('trix-file-accept', function(e) {  
         e.preventDefault();
     });
+    
 
 </script>
