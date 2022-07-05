@@ -14,7 +14,7 @@ use Illuminate\Support\Arr;
 
 class StudioController extends Controller
 {
-    public function browseIndex()
+    public function katalog()
     {
         //dd(request('search')); -> buat liat kalo ada dpt searchnya
         $title = "";
@@ -32,7 +32,7 @@ class StudioController extends Controller
             "title" => "All Studio " .  $title,
             "active" => 'studios',
             // "catalogue" => Studio::all()
-            "catalogue" => Studio::latest()->filter(request(['search', 'category', 'owner']))->paginate(7)->withQueryString()
+            "studios" => Studio::latest()->filter(request(['search', 'category', 'owner']))->paginate(7)->withQueryString()
         ]);
     }
 
