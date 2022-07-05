@@ -14,7 +14,7 @@
             <div id="carouselExampleIndicators" class="carousel slide w-100 d-flex flex-column justify-content-center align-items-stretch bg-dark border" data-bs-ride="false" style="min-height: 500px; max-height: 500px">
                 <div class="carousel-indicators">
                     
-                    @if ($studio->images)
+                    @if ($studio->images->isNotEmpty())
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         @for ($i = 1; $i < $studio->images->count(); $i++)
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button> 
@@ -30,7 +30,7 @@
                 </div>
                 <div class="carousel-inner d-flex align-items-center h-100">
 
-                    @if ($studio->images)
+                    @if ($studio->images->isNotEmpty())
 
                         <div class="carousel-item active">
                             <img src="{{ asset('storage/') .'/' . $studio->images[0]->path }}" class="d-block w-100" alt="...">
