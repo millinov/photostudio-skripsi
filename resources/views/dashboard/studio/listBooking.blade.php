@@ -1,6 +1,7 @@
 <div class="row w-100 py-4 px-3">
     
     <h3>Active Booking</h3>
+    <hr>
 
     <div class="border w-100 d-flex justify-content-center">
         <div class="row row-cols-4 my-3 w-100">

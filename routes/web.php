@@ -16,6 +16,7 @@ use App\Http\Controllers\StudioController;
 |
 */
 
+Route::get('/katalog', [StudioController::class, 'browseIndex']);
 Route::get('/', function () {
     return view('home',[
         "title" => "Home",
@@ -23,17 +24,31 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        "active" => 'about',
-        "name" => "Aplikasi sewa Studio Foto",
-        "email" => "asdfg@gmail.com",
-        "image" => "image-about.jpg"
+// Route::get('/about', function () {
+//     return view('about', [
+//         "title" => "About",
+//         "active" => 'about',
+//         "name" => "Aplikasi sewa Studio Foto",
+//         "email" => "asdfg@gmail.com",
+//         "image" => "image-about.jpg"
+
+Route::get('/transaction', function () {
+    return view('transaction', [
+        "title" => "transaction",
+        "active" => 'transaction',
     ]);
 });
 
+Route::get('/history', function () {
+    return view('history', [
+        "title" => "history",
+        "active" => 'history',
+    ]);
+});
+
+
 Route::get('/katalog', [StudioController::class, 'browseIndex']);
+
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
 Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('auth');
