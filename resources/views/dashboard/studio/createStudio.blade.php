@@ -90,6 +90,7 @@
 
                         <div class="col-lg-5">
                             <div class="mb-3">
+                                <label for="images" class="form-label">Studio's image</label>
                                 <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple >
 
 
