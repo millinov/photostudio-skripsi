@@ -27,7 +27,9 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/dashboard">My Dashboard <i class="bi bi-layout-text-sidebar-reverse"></i></a></li>
-                <li><a class="dropdown-item" href="@if(isset(auth()->user()->studio[0])) /dashboard/studio/{{ auth()->user()->studio[0]->slug }}@else /dashboard/studio  @endif">My Studio <i class="bi bi-camera"></i></a></li>
+                @can('seller')
+                    <li><a class="dropdown-item" href="@if(isset(auth()->user()->studio[0])) /dashboard/studio/{{ auth()->user()->studio[0]->slug }}@else /dashboard/studio  @endif">My Studio <i class="bi bi-camera"></i></a></li>
+                @endcan
                 <li><hr class="dropdown-divider"></li>
                 <li>
                   <form action="/logout" method="post">

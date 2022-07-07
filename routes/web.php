@@ -22,7 +22,7 @@ Route::get('/', function () {
         "title" => "Home",
         "active" => 'home',
     ]);
-});
+})->name('home');
 
 // Route::get('/about', function () {
 //     return view('about', [
@@ -51,7 +51,7 @@ Route::get('/katalog', [StudioController::class, 'katalog']);
 
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
-Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('auth');
+Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('seller');
 Route::get('/dashboard/checkSlug', [StudioController::class, 'createSlug']);
 
 // halaman kategori

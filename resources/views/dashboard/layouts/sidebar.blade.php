@@ -23,6 +23,8 @@
                 </a>
             </li>
 
+            @can('seller')
+
             <div class="border-top mt-2">
                 <li class="nav-item mt-2">
                     <a class="nav-link {{ Request::is('dashboard/studio') ? 'active' : '' }}" href="@if($studio == null) /dashboard/studio @else /dashboard/studio/{{ $studio->slug }} @endif">
@@ -31,6 +33,8 @@
                     </a>
                 </li>
             </div>
+                
+            @endcan
 
         </ul>
     </div>
