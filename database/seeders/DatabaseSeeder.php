@@ -23,10 +23,17 @@ class DatabaseSeeder extends Seeder
             'email' => 'milinovadmiral@gmail.com',
             'phone_number' => '0218848460',
             'password' => bcrypt('12345'),
-            'is_admin' => true
+            'is_admin' => true,
+            'is_seller' => true
         ]);
 
-        User::factory(10)->create();
+        User::factory(10)->create([
+            'is_seller' => true
+        ]);
+
+        User::factory(10)->create([
+            'is_seller' => false
+        ]);
 
         Category::create([
             'name' => 'Formal',
