@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class StudioController extends Controller
 {
@@ -103,7 +104,7 @@ class StudioController extends Controller
         $validatedData['excerpt'] = Str::limit($request->desc, 100, '...');
         $validatedData['published_at'] = Carbon::now()->toDateTimeString();
 
-        $validatedStudio = Arr::except($validatedData, ['image']);
+        $validatedStudio = Arr::except($validatedData, ['images']);
         $validatedImage = [];
 
         Studio::create($validatedStudio);
@@ -162,6 +163,8 @@ class StudioController extends Controller
             'title' => 'required|max:255',
             'category_id' => 'required',
             'address' => 'required',
+            'images' => 'required',
+            'images.*' => 'required|image||mimes:jpeg,png,jpg,gif,svg|max:10240',
             'desc' => 'required'
         ];
 
@@ -177,9 +180,31 @@ class StudioController extends Controller
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit($request->desc, 100, '...');
+        $validatedStudio = Arr::except($validatedData, ['images']);
+        $validatedImage = [];
 
         Studio::where('id', $studio->id)
-                ->update($validatedData);
+                ->update($validatedStudio);
+
+        if($request->images)
+        {
+            if($request->oldImage)
+            {
+                $currImage = Image::where('studio_id', $studio->id);
+                foreach($request->oldImage as $studioImage)
+                {
+                    Storage::disk('public')->delete($studioImage);
+                }
+                $currImage->delete();
+            }
+
+            foreach($request->images as $image)
+            {
+                $validatedImage['path'] = $image->store('studio-images');
+                $validatedImage['studio_id'] = $studio->id;
+                Image::create($validatedImage);
+            }
+        }
 
         return redirect()->route('studio', $newSlug)->with('success', 'Studio has been updated!');
     }
