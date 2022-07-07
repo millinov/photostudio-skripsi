@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Studio;
 use Illuminate\Http\Request;
@@ -80,6 +81,26 @@ class UserController extends Controller
         return view('dashboard.userPage',[
             'title' => 'Dashboard',
             'active' => 'dashboard',
+            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
+        ]);
+    }
+
+    public function adminUsers()
+    {
+        return view('dashboard.admin.userList',[
+            'title' => 'Dashboard',
+            'active' => 'dashboard',
+            'users' => User::all(),
+            'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
+        ]);
+    }
+
+    public function adminCategories()
+    {
+        return view('dashboard.admin.categoryList',[
+            'title' => 'Dashboard',
+            'active' => 'dashboard',
+            'categories' => Category::all(),
             'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
         ]);
     }
