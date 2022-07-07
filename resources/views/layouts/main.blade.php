@@ -41,7 +41,6 @@
           justify-content: space-evenly;
           gap: 20px;
           flex-wrap: wrap;
-          overflow-y: scroll;
 
       }
       figure{
