@@ -31,6 +31,30 @@
           padding: 10px;
           max-width: 100%;
       }
+
+      #images-preview
+      {
+          width: 90%;
+          position: relative;
+          margin: auto;
+          display: flex;
+          justify-content: space-evenly;
+          gap: 20px;
+          flex-wrap: wrap;
+          overflow-y: scroll;
+
+      }
+      figure{
+          width: 45%
+      }
+      img{
+          width: 100%
+      }
+      figcaption{
+          text-align: center;
+          font-size: 12px;
+          margin-top: 0.5rem;
+      }
     </style>
 
   </head>
