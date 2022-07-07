@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('password');
             $table->boolean('is_admin')->default(false);
+            $table->boolean('is_seller')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
