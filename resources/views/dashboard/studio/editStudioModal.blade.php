@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="post" action="/dashboard/studio/{{ $studio->slug }}" id="editStudioForm">
+            <form method="post" action="/dashboard/studio/{{ $studio->slug }}" id="editStudioForm" enctype="multipart/form-data">
                 @method('put')
                 @csrf
 
@@ -71,6 +71,21 @@
                         </div>
 
                     </div>
+
+                    <div class="col-lg-5">
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Studio's image</label>
+                            <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple >
+
+
+                            @error('images')
+                                <div class="invalid-feedback mb-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
 
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Edit Studio</button>
