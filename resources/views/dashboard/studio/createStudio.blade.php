@@ -91,8 +91,6 @@
                                 <label for="images" class="form-label">Studio's image</label>
                                 <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple onchange="preview()">
 
-                                
-
                                 @error('images')
                                     <div class="invalid-feedback mb-2">
                                         {{ $message }}
@@ -137,8 +135,6 @@
     
     let images = document.getElementById('images');
     let imageContainer = document.getElementById('images-preview');
-
-    console.log(images, imageContainer);
 
     function preview()
     {
