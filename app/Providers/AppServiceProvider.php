@@ -29,11 +29,11 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         Gate::define('seller', function(User $user) {
-            return $user->is_seller === true;
+            return $user->is_seller === 1;
         });
 
         Gate::define('admin', function(User $user) {
-            return $user->is_admin === true;
+            return $user->is_admin === 1;
         });
     }
 }
