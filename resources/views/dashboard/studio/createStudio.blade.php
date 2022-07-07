@@ -1,6 +1,4 @@
 
-
-
 <div class="row w-100 py-4 px-3 d-flex flex-column justify-content-center align-items-center">
 
     @if (session()->has('success'))
@@ -91,8 +89,9 @@
                         <div class="col-lg-5">
                             <div class="mb-3">
                                 <label for="images" class="form-label">Studio's image</label>
-                                <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple >
+                                <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple onchange="preview()">
 
+                                
 
                                 @error('images')
                                     <div class="invalid-feedback mb-2">
@@ -100,6 +99,8 @@
                                     </div>
                                 @enderror
                             </div>
+
+                            <div id="images-preview"></div>
                         </div>
 
                     <div class="modal-footer">
@@ -134,5 +135,31 @@
         e.preventDefault();
     });
     
+    let images = document.getElementById('images');
+    let imageContainer = document.getElementById('images-preview');
+
+    console.log(images, imageContainer);
+
+    function preview()
+    {
+        imageContainer.innerHTML = "";
+
+        for(i of images.files)
+        {
+            let reader = new FileReader();
+            let figure = document.createElement("figure");
+            let figCap = document.createElement("figcaption");
+
+            figCap.innerText = i.name;
+            figure.appendChild(figCap);
+            reader.onload=()=>{
+                let img = document.createElement("img");
+                img.setAttribute("src",reader.result);
+                figure.insertBefore(img,figCap);
+            }
+            imageContainer.appendChild(figure);
+            reader.readAsDataURL(i);
+        }
+    }
 
 </script>
