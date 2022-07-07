@@ -24,16 +24,44 @@
             </li>
 
             @can('seller')
+                <div class="mt-2">
+                    <div class="d-flex align-items-center ">
+                        <span class="me-1">Seller</span>
+                        <div class="w-100 border-top" style="border-color: black !important;"></div>
+                    </div>
+                    
+                    <li class="nav-item mt-2">
+                        <a class="nav-link {{ Request::is('dashboard/studio') ? 'active' : '' }}" href="@if(isset($studio)) /dashboard/studio/{{ $studio->slug }} @else /dashboard/studio  @endif">
+                        <i class="bi bi-camera me-2"></i>
+                        My Studio
+                        </a>
+                    </li>
+                </div>
+            @endcan
 
-            <div class="border-top mt-2">
-                <li class="nav-item mt-2">
-                    <a class="nav-link {{ Request::is('dashboard/studio') ? 'active' : '' }}" href="@if($studio == null) /dashboard/studio @else /dashboard/studio/{{ $studio->slug }} @endif">
-                    <i class="bi bi-camera me-2"></i>
-                    My Studio
-                    </a>
-                </li>
-            </div>
-                
+            @can('admin')
+                <div class="mt-2">
+
+                    <div class="d-flex align-items-center ">
+                        <span class="me-1">Admin</span>
+                        <div class="w-100 border-top" style="border-color: black !important;"></div>
+                    </div>
+
+                    <li class="nav-item mt-2">
+                        <a class="nav-link {{ Request::is('dashboard/categories') ? 'active' : '' }}" href="/dashboard/categories">
+                        <i class="bi bi-card-list me-2"></i>
+                        Categories
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('dashboard/users') ? 'active' : '' }}" href="/dashboard/users">
+                        <i class="bi bi-card-list me-2"></i>
+                        Users
+                        </a>
+                    </li>
+
+                </div>
             @endcan
 
         </ul>
