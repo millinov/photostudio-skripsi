@@ -18,7 +18,7 @@ class IsSeller
     {
         if(!auth()->check() || !auth()->user()->is_seller)
         {
-            return route('home');
+            abort(403);
         }
 
         return $next($request);
