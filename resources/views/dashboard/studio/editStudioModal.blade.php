@@ -11,7 +11,7 @@
                 @method('put')
                 @csrf
 
-                <div class="modal-body">
+                <div class="modal-body row">
                     <div class="col-lg-7">
 
                         <div class="mb-3">
@@ -75,14 +75,26 @@
                     <div class="col-lg-5">
                         <div class="mb-3">
                             <label for="images" class="form-label">Studio's image</label>
-                            <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple >
-
+                            @if ($studio->images->isNotEmpty())
+                                <input type="hidden" name="oldImage[]" value="{{ $studio->images }}">
+                            @endif
+                            <input class="form-control  @error('images') is-invalid @enderror" type="file" id="images" name="images[]" multiple onchange="preview()">
 
                             @error('images')
                                 <div class="invalid-feedback mb-2">
                                     {{ $message }}
                                 </div>
                             @enderror
+                        </div>
+
+                        <div id="images-preview">
+                            @if ($studio->images->isNotEmpty())
+                                @foreach ($studio->images as $image)
+                                    <figure> 
+                                        <img src="{{ asset('storage/') .'/' . $image->path }}" alt="">
+                                    </figure>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
