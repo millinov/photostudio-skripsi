@@ -19,61 +19,67 @@
 
             {{-- <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid" alt="{{ $studio->category->name }}"> --}}
 
-            <div id="carouselExampleIndicators" class="carousel slide w-100 d-flex flex-column justify-content-center align-items-stretch bg-dark border" data-bs-ride="false" style="min-height: 500px;">
-                <div class="carousel-indicators">
-                    
-                    @if ($studio->images)
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        @for ($i = 1; $i < $studio->images->count(); $i++)
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button> 
-                        @endfor
-                    @else
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        @for ($i = 1; $i <=2; $i++ )
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button>
-                        @endfor
+            @if ($studio->images->isNotEmpty())
+                <div id="carouselExampleIndicators" class="carousel slide w-100 d-flex flex-column justify-content-center align-items-stretch bg-dark border" data-bs-ride="false" style="min-height: 500px;">
+                    <div class="carousel-indicators">
                         
-                    @endif
-    
-                </div>
-                <div class="carousel-inner d-flex align-items-center h-100">
+                        @if ($studio->images)
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            @for ($i = 1; $i < $studio->images->count(); $i++)
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button> 
+                            @endfor
+                        @else
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            @for ($i = 1; $i <=2; $i++ )
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button>
+                            @endfor
+                            
+                        @endif
+        
+                    </div>
+                    <div class="carousel-inner d-flex align-items-center h-100">
 
-                    @if ($studio->images)
+                        @if ($studio->images)
 
-                        <div class="carousel-item active">
-                            <img src="{{ asset('storage/') .'/' . $studio->images[0]->path }}" class="d-block w-100" alt="{{ $studio->category->name }}">
-                        </div>
-                        @foreach ($studio->images->skip(1) as $image)
-                            <div class="carousel-item">
-                                <img src="{{ asset('storage/') .'/' . $image->path }}" class="img-responsived-block w-100" alt="{{ $studio->category->name }}">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('storage/') .'/' . $studio->images[0]->path }}" class="d-block w-100" alt="{{ $studio->category->name }}">
                             </div>
-                        @endforeach
-                        
-                    @else
+                            @foreach ($studio->images->skip(1) as $image)
+                                <div class="carousel-item">
+                                    <img src="{{ asset('storage/') .'/' . $image->path }}" class="img-responsived-block w-100" alt="{{ $studio->category->name }}">
+                                </div>
+                            @endforeach
+                            
+                        @else
 
-                        <div class="carousel-item active">
-                            <img src="https://picsum.photos/1200/700?random=0" class="d-block w-100" alt="{{ $studio->category->name }}">
-                        </div>
-                        @for ($i = 1; $i <=2; $i++ )
-                            <div class="carousel-item">
-                                <img src="https://picsum.photos/1200/700?random={{ $i }}" class="d-block w-100" alt="{{ $studio->category->name }}">
+                            <div class="carousel-item active">
+                                <img src="https://picsum.photos/1200/700?random=0" class="d-block w-100" alt="{{ $studio->category->name }}">
                             </div>
-                        @endfor
-                        
-                    @endif
-    
-                </div>
+                            @for ($i = 1; $i <=2; $i++ )
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/1200/700?random={{ $i }}" class="d-block w-100" alt="{{ $studio->category->name }}">
+                                </div>
+                            @endfor
+                            
+                        @endif
+        
+                    </div>
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-    
-            </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+        
+                </div>
+            @else
+                <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid" alt="{{ $studio->category->name }}">
+            @endif
+
+            
 
             <div class="d-flex justify-content-between">
                 <div class="col-lg-9 mt-3">
