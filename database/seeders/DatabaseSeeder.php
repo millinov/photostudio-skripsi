@@ -27,6 +27,26 @@ class DatabaseSeeder extends Seeder
             'is_seller' => true
         ]);
 
+        User::create([
+            'name' => 'Mikail Rifqi Rusdi',
+            'username' => 'rifqi57',
+            'email' => 'mikailrifqi11@gmail.com',
+            'phone_number' => '085212430108',
+            'password' => bcrypt('12345'),
+            'is_admin' => true,
+            'is_seller' => true
+        ]);
+
+        User::create([
+            'name' => 'Mohamad Karim Gibran',
+            'username' => 'agam',
+            'email' => 'mkarimgibran.01@gmail.com',
+            'phone_number' => '08118010116',
+            'password' => bcrypt('12345'),
+            'is_admin' => true,
+            'is_seller' => true
+        ]);
+
         User::factory(10)->create([
             'is_seller' => true
         ]);
