@@ -105,14 +105,23 @@ class UserController extends Controller
         ]);
     }
 
-    public function becomeSeller(Request $request)
+    public function becomeSeller(Request $request, User $user)
     {
         $validatedData = $request->validate([
             'is_seller' => 'required|max:2'
         ]);
         
-        User::where('id', auth()->user()->id)->update(['is_seller' => $validatedData['is_seller']]);
+        User::where('id', $user->id)->update(['is_seller' => $validatedData['is_seller']]);
 
         return redirect()->intended('/dashboard')->with('success', 'Your request has been received!');
+        if($validatedData['is_seller'] == 2)
+        {
+            return redirect()->intended('/dashboard')->with('success', 'Your request has been received!');
+        }
+        else
+        {
+            return redirect('/dashboard/users')->with('success', $user->name . 'has become a Studio Owner');
+        }
+        
     }
 }
