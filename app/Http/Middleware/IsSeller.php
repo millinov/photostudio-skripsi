@@ -16,7 +16,7 @@ class IsSeller
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() || !auth()->user()->is_seller)
+        if(!auth()->check() || auth()->user()->is_seller != 1)
         {
             abort(403);
         }
