@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudioController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,5 +69,9 @@ Route::post('/register', [UserController::class, 'store']);
 Route::post('/become-a-seller/{user:username}', [UserController::class, 'becomeSeller']);
 
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
+
 Route::get('/dashboard/categories', [UserController::class, 'adminCategories'])->middleware('admin');
+Route::post('/dashboard/categories', [CategoryController::class, 'store']);
+Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'createSlug']);
+
 Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middleware('admin');
