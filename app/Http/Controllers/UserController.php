@@ -104,4 +104,15 @@ class UserController extends Controller
             'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
         ]);
     }
+
+    public function becomeSeller(Request $request)
+    {
+        $validatedData = $request->validate([
+            'is_seller' => 'required|max:2'
+        ]);
+        
+        User::where('id', auth()->user()->id)->update(['is_seller' => $validatedData['is_seller']]);
+
+        return redirect()->intended('/dashboard')->with('success', 'Your request has been received!');
+    }
 }

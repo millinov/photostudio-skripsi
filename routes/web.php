@@ -65,6 +65,8 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'store']);
 
+Route::post('/become-a-seller', [UserController::class, 'becomeSeller']);
+
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
 Route::get('/dashboard/categories', [UserController::class, 'adminCategories'])->middleware('admin');
 Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middleware('admin');

@@ -29,6 +29,14 @@
                 <li><a class="dropdown-item" href="/dashboard">My Dashboard <i class="bi bi-layout-text-sidebar-reverse"></i></a></li>
                 @can('seller')
                     <li><a class="dropdown-item" href="@if(isset(auth()->user()->studio[0])) /dashboard/studio/{{ auth()->user()->studio[0]->slug }}@else /dashboard/studio  @endif">My Studio <i class="bi bi-camera"></i></a></li>
+                @else
+                    <li>
+                      <form action="/become-a-seller" method="post">
+                        @csrf 
+                        <input type="hidden" value="2" name="is_seller" id="is_seller">
+                        <button type="submit" class="dropdown-item" >Become a Studio Owner <i class="bi bi-caret-right-fill"></i></button>
+                      </form>
+                    </li>
                 @endcan
                 <li><hr class="dropdown-divider"></li>
                 <li>
