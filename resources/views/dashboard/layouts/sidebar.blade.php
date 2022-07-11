@@ -17,7 +17,7 @@
             </li>
         
             <li class="nav-item">
-                <a class="nav-link t{{ Request::is('dashboard/history') ? 'active' : '' }}" href="#">
+                <a class="nav-link {{ Request::is('dashboard/history') ? 'active' : '' }}" href="/dashboard/history">
                 <i class="bi bi-clock-history me-2"></i>
                 History
                 </a>
