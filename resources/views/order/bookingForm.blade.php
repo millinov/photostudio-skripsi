@@ -92,18 +92,6 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="full_payment" class="form-label">Full Payment</label>
-                            <input type="text" name="full_payment" class="form-control @error('full_payment') is-invalid @enderror" id="full_payment" value="{{ old('full_payment') }}" required>
-
-                            @error('full_payment')
-                                <div class="invalid-feedback mb-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            
-                        </div>
-
-                        <div class="mb-3">
                             <label for="desc" class="form-label">Description</label>
                             <input id="desc" type="text" name="desc" class="form-control @error('desc') is-invalid @enderror" value="{{ old('desc') }}">
 
