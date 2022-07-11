@@ -27,7 +27,6 @@ class OrderController extends Controller
             'start_time' => 'required|date_format:H:i|before:end_time',
             'end_time' => 'required|date_format:H:i|after:start_time',
             'final_price' => 'required',
-            'full_payment' => 'required|same:final_price',
             'desc' => 'max:255',
         ];
 
