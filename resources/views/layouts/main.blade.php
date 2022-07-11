@@ -14,8 +14,25 @@
     {{-- jQuery --}}
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+    <!-- Popperjs -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+    <!-- Tempus Dominus JavaScript -->
+    <script src="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@development/dist/js/tempus-dominus.js"
+    crossorigin="anonymous"></script>
+
+    <!-- Tempus Dominus Styles -->
+    <link href="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@development/dist/css/tempus-dominus.css"
+    rel="stylesheet" crossorigin="anonymous">
+
+    <script type="text/javascript" src="/js/date.js"></script>
+    <script type="text/javascript" src="/js/date-id-ID.js"></script>
+
     {{-- Style Sendiri --}}
     <link rel="stylesheet" href="/css/style.css">
+
+    {{-- Font Awesome --}}
+    <script src="https://kit.fontawesome.com/76e4c11185.js" crossorigin="anonymous"></script>
 
     {{-- trix editor --}}
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
