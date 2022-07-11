@@ -41,12 +41,7 @@ Route::get('/transaction', function () {
     ]);
 });
 
-Route::get('/history', function () {
-    return view('history', [
-        "title" => "history",
-        "active" => 'history',
-    ]);
-});
+
 
 
 Route::get('/katalog', [StudioController::class, 'katalog']);
@@ -69,6 +64,7 @@ Route::post('/become-a-seller/{user:username}', [UserController::class, 'becomeS
 
 //dashboard user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
+Route::get('/dashboard/history', [OrderController::class, 'history'])->middleware('auth');
 
 //seller
 Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('seller');
@@ -81,7 +77,5 @@ Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'creat
 
 Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middleware('admin');
 
-
 //order
-
 Route::post('/order/{studio:slug}', [OrderController::class, 'store'])->middleware('auth');
