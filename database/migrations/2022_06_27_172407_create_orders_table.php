@@ -24,7 +24,6 @@ return new class extends Migration
             $table->text('desc')->nullable();
             $table->decimal('final_price');
             $table->decimal('down_payment')->nullable();
-            $table->decimal('full_payment');
             $table->timestamps();
         });
     }
