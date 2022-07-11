@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="post" action="" id="createOrderForm">
+            <form method="post" action="/order/{{ $studio->slug }}" id="createOrderForm">
                 @csrf
 
                 <input type="hidden" value="0" name="status" id="status">
@@ -15,54 +15,51 @@
                     <div class="col-lg-7">
 
                         <div class="mb-3">
-                            <label for="datePickerInput" class="form-label">Booking Date</label>
+                            <label for="reservation_date" class="form-label">Booking Date</label>
                             <div class="input-group" id="datePicker" data-td-target-input="nearest" data-td-target-toggle="nearest">
-                                <input id="datePickerInput" name="datePickerInput" type="text" class="form-control @error('datePickerInput') is-invalid @enderror" data-td-target="#datePicker" value="{{ old('datePicker') }}" required/>
-                            
-                                @error('datePickerInput')
+                                <input id="reservation_date" name="reservation_date" type="text" class="form-control @error('reservation_date') is-invalid @enderror" data-td-target="#datePicker" value="{{ old('reservation_date') }}" placeholder="mm/dd/yyyy" required/>
+                                <span class="input-group-text" data-td-target="#datePicker" data-td-toggle="datetimepicker">
+                                    <i class="bi bi-calendar"></i>
+                                </span>
+
+                                @error('reservation_date')
                                     <div class="invalid-feedback mb-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
-
-                                <span class="input-group-text" data-td-target="#datePicker" data-td-toggle="datetimepicker">
-                                    <i class="bi bi-calendar"></i>
-                                </span>
                             </div>
                         </div>
 
                         <div class="mb-3 row">
                             <div class="col">
-                                <label for="startTimeInput" class="form-label">Start Time</label>
+                                <label for="start_time" class="form-label">Start Time</label>
                                 <div class="input-group" id="startTime" data-td-target-input="nearest" data-td-target-toggle="nearest">
-                                    <input id="startTimeInput" name="startTimeInput" type="text" class="form-control @error('startTimeInput') is-invalid @enderror" data-td-target="#startTime" value="{{ old('startTimeInput') }}" required/>
+                                    <input id="start_time" name="start_time" type="text" class="form-control @error('start_time') is-invalid @enderror" data-td-target="#startTime" value="{{ old('start_time') }}" required/>
+                                    <span class="input-group-text" data-td-target="#startTime" data-td-toggle="datetimepicker">
+                                        <i class="bi bi-clock"></i>
+                                    </span>
 
-                                    @error('startTimeInput')
+                                    @error('start_time')
                                         <div class="invalid-feedback mb-2">
                                             {{ $message }}
                                         </div>
                                     @enderror
-
-                                    <span class="input-group-text" data-td-target="#startTime" data-td-toggle="datetimepicker">
-                                        <i class="bi bi-clock"></i>
-                                    </span>
                                 </div>
                             </div>
 
                             <div class="col">
-                                <label for="endTimeInput" class="form-label">End Time</label>
+                                <label for="end_time" class="form-label">End Time</label>
                                 <div class="input-group" id="endTime" data-td-target-input="nearest" data-td-target-toggle="nearest">
-                                    <input id="endTimeInput" name="endTimeInput" type="text" class="form-control @error('endTimeInput') is-invalid @enderror" data-td-target="#endTime" value="{{ old('endTimeInput') }}" required/>
+                                    <input id="end_time" name="end_time" type="text" class="form-control @error('end_time') is-invalid @enderror" data-td-target="#endTime" value="{{ old('end_time') }}" required/>
+                                    <span class="input-group-text" data-td-target="#endTime" data-td-toggle="datetimepicker">
+                                        <i class="bi bi-clock"></i>
+                                    </span>
 
-                                    @error('endTimeInput')
+                                    @error('end_time')
                                         <div class="invalid-feedback mb-2">
                                             {{ $message }}
                                         </div>
                                     @enderror
-
-                                    <span class="input-group-text" data-td-target="#endTime" data-td-toggle="datetimepicker">
-                                        <i class="bi bi-clock"></i>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -96,9 +93,15 @@
 
                         <div class="mb-3">
                             <label for="full_payment" class="form-label">Full Payment</label>
-                            <input type="text" name="full_payment" class="form-control @error('full_payment') is-invalid @enderror" id="full_payment" value="{{ old('full_payment') }}" required readonly>
+                            <input type="text" name="full_payment" class="form-control @error('full_payment') is-invalid @enderror" id="full_payment" value="{{ old('full_payment') }}" required>
+
+                            @error('full_payment')
+                                <div class="invalid-feedback mb-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             
-                            
+                        </div>
 
                         <div class="mb-3">
                             <label for="desc" class="form-label">Description</label>
@@ -110,20 +113,77 @@
                                 </div>
                             @enderror
                         </div>
-                        </div>
-
                     </div>
 
                     <div class="col-lg-5">
                         <div class="mb-3">
                             <label for="images" class="form-label">Studio's image</label>
+                            @if ($studio->images->isNotEmpty())
+                            <div id="bookingFormCarousel" class="carousel slide w-100 d-flex flex-column justify-content-center align-items-stretch bg-dark border" data-bs-ride="false" style="min-height: 500px;">
+                                <div class="carousel-indicators">
+                                    
+                                    @if ($studio->images)
+                                        <button type="button" data-bs-target="#bookingFormCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        @for ($i = 1; $i < $studio->images->count(); $i++)
+                                            <button type="button" data-bs-target="#bookingFormCarousel" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button> 
+                                        @endfor
+                                    @else
+                                        <button type="button" data-bs-target="#bookingFormCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        @for ($i = 1; $i <=2; $i++ )
+                                            <button type="button" data-bs-target="#bookingFormCarousel" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1 }}"></button>
+                                        @endfor
+                                        
+                                    @endif
+                    
+                                </div>
+                                <div class="carousel-inner d-flex align-items-center h-100">
+
+                                    @if ($studio->images)
+
+                                        <div class="carousel-item active">
+                                            <img src="{{ asset('storage/') .'/' . $studio->images[0]->path }}" class="d-block w-100" alt="{{ $studio->category->name }}">
+                                        </div>
+                                        @foreach ($studio->images->skip(1) as $image)
+                                            <div class="carousel-item">
+                                                <img src="{{ asset('storage/') .'/' . $image->path }}" class="img-responsived-block w-100" alt="{{ $studio->category->name }}">
+                                            </div>
+                                        @endforeach
+                                        
+                                    @else
+
+                                        <div class="carousel-item active">
+                                            <img src="https://picsum.photos/1200/700?random=0" class="d-block w-100" alt="{{ $studio->category->name }}">
+                                        </div>
+                                        @for ($i = 1; $i <=2; $i++ )
+                                            <div class="carousel-item">
+                                                <img src="https://picsum.photos/1200/700?random={{ $i }}" class="d-block w-100" alt="{{ $studio->category->name }}">
+                                            </div>
+                                        @endfor
+                                        
+                                    @endif
+                    
+                                </div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#bookingFormCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#bookingFormCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                    
+                            </div>
+                            @else
+                                <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid" alt="{{ $studio->category->name }}">
+                            @endif
                         </div>
                     </div>
-
+                </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Create Booking</button>
                 </div>
-                
+
             </form>
 
         </div>
@@ -153,7 +213,8 @@
                 date: false,
                 hours: true,
                 minutes: true,
-                seconds: false
+                seconds: false,
+                useTwentyfourHour: true
             }
         }
     });
@@ -168,7 +229,8 @@
                 date: false,
                 hours: true,
                 minutes: true,
-                seconds: false
+                seconds: false,
+                useTwentyfourHour: true
             }
         }
     });
