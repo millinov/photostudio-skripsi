@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StudioController;
-use App\Models\Category;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +53,6 @@ Route::get('/katalog', [StudioController::class, 'katalog']);
 
 // halaman single post
 Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
-Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('seller');
-Route::get('/dashboard/checkSlug', [StudioController::class, 'createSlug']);
 
 // halaman kategori
 Route::get('/categories', [CategoryController::class, 'show']);
@@ -68,10 +67,21 @@ Route::post('/register', [UserController::class, 'store']);
 
 Route::post('/become-a-seller/{user:username}', [UserController::class, 'becomeSeller']);
 
+//dashboard user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
 
+//seller
+Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('seller');
+Route::get('/dashboard/checkSlug', [StudioController::class, 'createSlug']);
+
+// admin
 Route::get('/dashboard/categories', [UserController::class, 'adminCategories'])->middleware('admin');
 Route::post('/dashboard/categories', [CategoryController::class, 'store']);
 Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'createSlug']);
 
 Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middleware('admin');
+
+
+//order
+
+Route::post('/order/{studio:slug}', [OrderController::class, 'store'])->middleware('auth');
