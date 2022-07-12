@@ -4,6 +4,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TransactionController;
@@ -34,16 +35,8 @@ Route::get('/', function () {
 //         "email" => "asdfg@gmail.com",
 //         "image" => "image-about.jpg"
 
-Route::get('/transaction', function () {
-    return view('transaction', [
-        "title" => "transaction",
-        "active" => 'transaction',
-    ]);
-});
-
-
 Route::get('/rating', function () {
-    return view('rating', [
+    return view('review.rating', [
         "title" => "rating",
         "active" => 'rating',
     ]);
@@ -55,10 +48,6 @@ Route::get('/wishlist', function () {
         "active" => 'wishlist',
     ]);
 });
-
-
-
-
 
 Route::get('/katalog', [StudioController::class, 'katalog']);
 
@@ -103,3 +92,7 @@ Route::post('/transaction/{order:id}', [TransactionController::class, 'store'])-
 Route::get('/receipt/fp/{transaction:id}', [TransactionController::class, 'fpDownload'])->middleware('auth');
 Route::get('/receipt/dp/{transaction:id}', [TransactionController::class, 'dpDownload'])->middleware('auth');
 Route::get('/receipt/iv/{transaction:id}', [TransactionController::class, 'ivDownload'])->middleware('auth');
+
+//review
+Route::get('/review/{order:id}', [ReviewController::class, 'create'])->middleware('auth');
+Route::post('/review/{order:id}', [ReviewController::class, 'store'])->middleware('auth');
