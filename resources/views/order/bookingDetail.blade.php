@@ -170,5 +170,8 @@
                 </div>
             </div>
         </div>
+
+        @include('transaction.createTransaction')
+
     </div>
 @endsection
