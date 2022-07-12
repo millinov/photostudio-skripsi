@@ -111,7 +111,7 @@
                         <label class="star star-1 fs-3" for="star-1"></label>
                     </div>
                     <div class="form-group mb-4">
-                        <textarea class="form-control" name="comment" id="" cols="100" rows="5" placeholder="Input Review" style="resize: none;"></textarea>
+                        <textarea class="form-control" name="review_text" id="review_text" cols="100" rows="5" placeholder="Input Review" style="resize: none;"></textarea>
                     </div>
                     <div class="form-group ">
                         <button type="submit" class="btn btn-primary btn-lg">
