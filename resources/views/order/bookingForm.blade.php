@@ -224,12 +224,7 @@
     });
 
     const downPaymentForm = document.getElementById('down_payment');
-    const price = document.querySelector('#final_price');
-    const fullP = document.querySelector('#full_payment');
-
-    price.addEventListener('change', function() {
-        fullP.value = price.value;
-    });
+    const downPaymentCheck = document.getElementById('downPaymentCheck');
 
     @if($errors->any())
         $(document).ready(function(){
@@ -240,10 +235,21 @@
     function checkDownPayment()
     {
         if(downPaymentForm.disabled) {
-            downPaymentForm.disabled = false;
+            if(downPaymentCheck.checked == false) {
+                downPaymentForm.disabled = true;
+            }
+            else {
+                downPaymentForm.disabled = false;
+            }
         }
         else{
-            downPaymentForm.disabled = true;
+            if(downPaymentCheck.checked == false) {
+                downPaymentForm.disabled = false;
+            }
+            else {
+                downPaymentForm.disabled = true;
+            }
         }
     }
+    
 </script>
