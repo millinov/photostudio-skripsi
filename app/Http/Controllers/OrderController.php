@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Studio;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,26 @@ class OrderController extends Controller
             "active" => 'history',
             "orders" => Order::where('user_id', auth()->user()->id)->latest()->get()
         ]);
+    }
+
+    public function show(Order $order)
+    {
+        return view('order.bookingDetail', [
+            "title" => "Order Detail",
+            "active" => 'studios',
+            "order" => $order,
+        ]);
+    }
+
+    public function update(Request $request,Order $order)
+    {
+        $status = $request->validate([
+            'status' => 'required|max:5',
+        ]);
+
+        Order::where('id', $order->id)->update(['status' => $status['status']]);
+        
+        return redirect()->route('studio', [$order->studio])->with('success', 'Order by '. $order->user->name.' has been updated!');
     }
 
     public function store(Request $request, Studio $studio)
