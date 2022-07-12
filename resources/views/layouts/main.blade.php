@@ -63,7 +63,7 @@
       figure{
           width: 45%
       }
-      img{
+      #images-preview img{
           width: 100%
       }
       figcaption{
