@@ -19,12 +19,12 @@
 
         <table class="table fs-8" style="border-color: black">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>No.</th>
                     <th>Studio</th>
                     <th>Price</th>
                     <th>Date</th>
-                    <th>Status</th>
+                    <th colspan="2">Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,10 +66,30 @@
                                     </button>
                                 @break
 
+                                @case(4)
+                                    Order is cancelled.
+                                @break
+
                                 @default
                                     Owner has not confirmed your booking.
                                 
                             @endswitch
+                        </td>
+                        <td>
+                            @if ($order->status <=1)
+
+                                <form action="/order/update/{{ $order->id }}" method="post">
+                                    @csrf 
+
+                                    <input type="hidden" value="4" name="status" id="status">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        Cancel Order
+                                    </button>
+                                </form>
+                                
+                            @else
+                                
+                            @endif
                         </td>
                     </tr>
                 @endforeach
