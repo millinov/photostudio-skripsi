@@ -40,6 +40,10 @@
                                             Reservation has happened. Order complete.
                                         @break
 
+                                        @case(4)
+                                            Order is cancelled.
+                                        @break
+
                                         @default
                                             You have not confirmed your booking.
                                         
