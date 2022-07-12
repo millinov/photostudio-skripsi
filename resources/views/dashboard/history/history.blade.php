@@ -82,7 +82,7 @@
                                     @csrf 
 
                                     <input type="hidden" value="4" name="status" id="status">
-                                    <button type="submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" class="btn btn-danger btn-sm">
                                         Cancel Order
                                     </button>
                                 </form>
