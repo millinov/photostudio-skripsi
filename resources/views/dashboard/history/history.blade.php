@@ -71,7 +71,7 @@
                                 @break
 
                                 @default
-                                    Owner has not confirmed your booking.
+                                    Order is cancelled.
                                 
                             @endswitch
                         </td>

@@ -45,7 +45,7 @@
                                         @break
 
                                         @default
-                                            You have not confirmed your booking.
+                                            Order is cancelled.
                                         
                                     @endswitch
                                 </span>
