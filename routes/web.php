@@ -84,4 +84,7 @@ Route::get('/order/{order:id}', [OrderController::class, 'show'])->middleware('s
 Route::post('/order/update/{order:id}', [OrderController::class, 'update'])->middleware('auth');
 
 //transaction
-Route::post('/transaction/{user:username}', [TransactionController::class, 'store'])->middleware('seller');
+Route::post('/transaction/{order:id}', [TransactionController::class, 'store'])->middleware('seller');
+Route::get('/receipt/fp/{transaction:id}', [TransactionController::class, 'fpDownload'])->middleware('auth');
+Route::get('/receipt/dp/{transaction:id}', [TransactionController::class, 'dpDownload'])->middleware('auth');
+Route::get('/receipt/iv/{transaction:id}', [TransactionController::class, 'ivDownload'])->middleware('auth');
