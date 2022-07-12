@@ -3,7 +3,7 @@
 @section('container')
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card d-flex m-auto p-2 justify-content-center flex-column align-items-center">
+            <div class="card d-flex m-auto p-2 justify-content-center flex-column align-items-center" style="background-color: #B7F9F5;">
                 <div class="card-body d-flex justify-content-center flex-column align-items-center">
 
                     <h3 class="card-title text-center mb-3">Booking Detail</h3>
@@ -108,30 +108,58 @@
                     </div>
                     <div class="d-flex w-100 justify-content-around">
                         @if ($order->status < 3)
-                            <form action="/order/update/{{ $order->id }}" method="post">
-                                @csrf 
+                            @switch($order->status)
+                                @case(0)
 
-                                <input type="hidden" value="{{ $order->status+1 }}" name="status" id="status">
-                                <button type="submit" class="btn btn-primary btn-lg">
-                                    @switch($order->status)
-                                        @case(0)
+                                    <form action="/order/update/{{ $order->id }}" method="post">
+                                        @csrf 
+
+                                        <input type="hidden" value="{{ $order->status+1 }}" name="status" id="status">
+                                        <button type="submit" class="btn btn-primary btn-lg">
                                             Confirm Order
-                                        @break
-                                        @case(1)
-                                            Confirm Payment
-                                        @break
-    
-                                        @case(2)
-                                            Complete Reservation
-                                        @break
-    
-                                        @default
-                                            You have not confirmed your booking.
-                                        
-                                    @endswitch
-                                </button>
+                                        </button>
+                                    </form>
+                                    
+                                    @break
+                                @case(1)
+                                    <button type="button" class="btn btn-primary btn-lg text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createTransactionModal">
+                                        Confirm Payment
+                                    </button>
+                                    @break
                                 
-                            </form>
+                                @case(2)
+
+                                <form action="/order/update/{{ $order->id }}" method="post">
+                                    @csrf 
+
+                                    <input type="hidden" value="3" name="status" id="status">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        Complete Reservation
+                                    </button>
+                                </form>
+                                
+                                @break
+                                    
+
+                                @default
+
+                                <form action="/order/update/{{ $order->id }}" method="post">
+                                    @csrf 
+
+                                    <input type="hidden" value="{{ $order->status+1 }}" name="status" id="status">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        Confirm Order
+                                    </button>
+                                </form>
+                                    
+                            @endswitch
+
+                        @endif
+
+                        @if ($order->transaction != null)
+                            <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#transaction-modal">
+                                See Transaction
+                            </button>
                         @endif
                         <a href="#" class="btn btn-primary btn-lg text-decoration-none">Chat</a>
                         <a href="/dashboard/studio/{{ $order->studio->slug }}" class="btn btn-primary btn-lg text-decoration-none">Return to Studio</a>
