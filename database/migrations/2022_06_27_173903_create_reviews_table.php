@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('studio_id');
             $table->foreignId('user_id');
             $table->foreignId('order_id');
-            $table->text('review_text');
+            $table->text('review_text')->nullable();
             $table->float('rating');
             $table->timestamps();
         });
