@@ -19,7 +19,6 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/katalog', [StudioController::class, 'browseIndex']);
 Route::get('/', function () {
     return view('home',[
         "title" => "Home",
@@ -41,6 +40,22 @@ Route::get('/transaction', function () {
         "active" => 'transaction',
     ]);
 });
+
+
+Route::get('/rating', function () {
+    return view('rating', [
+        "title" => "rating",
+        "active" => 'rating',
+    ]);
+});
+
+Route::get('/wishlist', function () {
+    return view('wishlist', [
+        "title" => "wishlist",
+        "active" => 'wishlist',
+    ]);
+});
+
 
 
 
