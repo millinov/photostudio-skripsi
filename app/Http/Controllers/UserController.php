@@ -113,7 +113,6 @@ class UserController extends Controller
         
         User::where('id', $user->id)->update(['is_seller' => $validatedData['is_seller']]);
 
-        return redirect()->intended('/dashboard')->with('success', 'Your request has been received!');
         if($validatedData['is_seller'] == 2)
         {
             return redirect()->intended('/dashboard')->with('success', 'Your request has been received!');
