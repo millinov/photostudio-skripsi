@@ -61,7 +61,7 @@
 
                                 @case(3)
                                     Reservation has happened. Order complete.
-                                    <button type="button" class="btn btn-primary btn-lg text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#seeTransactionModal-{{ $order->transaction->id }}">
+                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#seeTransactionModal-{{ $order->transaction->id }}">
                                         See Transaction
                                     </button>
                                 @break
