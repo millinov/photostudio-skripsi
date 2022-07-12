@@ -37,7 +37,15 @@ class OrderController extends Controller
 
         Order::where('id', $order->id)->update(['status' => $status['status']]);
         
-        return redirect()->route('studio', [$order->studio])->with('success', 'Order by '. $order->user->name.' has been updated!');
+        
+
+        if ($order->studio->user->id === auth()->user()->id) {
+            return redirect()->route('studio', [$order->studio])->with('success', 'Order by '. $order->user->name.' has been updated!');
+        }
+        else
+        {
+            return redirect('/dashboard/history')->with('success', 'Order at '. $order->studio->title.' has been cancelled!');
+        }
     }
 
     public function store(Request $request, Studio $studio)
