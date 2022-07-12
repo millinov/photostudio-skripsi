@@ -80,4 +80,4 @@ Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middlewar
 //order
 Route::post('/order/{studio:slug}', [OrderController::class, 'store'])->middleware('auth');
 Route::get('/order/{order:id}', [OrderController::class, 'show'])->middleware('seller');
-Route::post('/order/update/{order:id}', [OrderController::class, 'update'])->middleware('seller');
+Route::post('/order/update/{order:id}', [OrderController::class, 'update'])->middleware('auth');
