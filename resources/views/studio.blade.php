@@ -19,7 +19,7 @@
                 <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
                     Create Booking
                 </button>
-                <a href="" class="btn btn-primary btn-sm text-decoration-none ms-2">Chat Now</a>
+                <a href="/chatify/{{ $studio->user->id }}" class="btn btn-primary btn-sm text-decoration-none ms-2">Chat Now</a>
             </div>
         </div>
 

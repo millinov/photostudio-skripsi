@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +82,6 @@ Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middlewar
 Route::post('/order/{studio:slug}', [OrderController::class, 'store'])->middleware('auth');
 Route::get('/order/{order:id}', [OrderController::class, 'show'])->middleware('seller');
 Route::post('/order/update/{order:id}', [OrderController::class, 'update'])->middleware('auth');
+
+//transaction
+Route::post('/transaction/{user:username}', [TransactionController::class, 'store'])->middleware('seller');

@@ -12,6 +12,7 @@
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "munafio/chatify": "^1.5",
         "twbs/bootstrap": "5.2.0-beta1"
     },
     "require-dev": {
