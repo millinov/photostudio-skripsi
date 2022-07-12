@@ -22,9 +22,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Studio</th>
-                    <th>Phone</th>
                     <th>Price</th>
-                    <th>Address</th>
                     <th>Date</th>
                     <th>Status</th>
                 </tr>
@@ -33,19 +31,17 @@
                 @foreach ($orders as $order)
                     <tr class="align-middle">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $order->studio->title}}</td>
-                        <td>{{ $order->user->phone_number}}</td>
+                        <td><a href="/katalog/{{ $order->studio->slug }}" class="text-decoration-none">{{ $order->studio->title }}</a></td>
                         <td>
                             <table>
                                 <tr>
                                     <td>Down Payment: @if($order->down_payment) {{ $order->down_payment }}  @else -- @endif</td>
                                 </tr>
                                 <tr>
-                                    <td>Full Payment: {{ $order->full_payment }}</td>
+                                    <td>Full Payment: {{ $order->final_price }}</td>
                                 </tr>
                             </table>
                         </td>
-                        <td>{{ $order->studio->address}}</td>
                         <td>{{ $order->reservation_date}}</td>
                         <td>
                             @switch($order->status)
@@ -58,10 +54,16 @@
 
                                 @case(2)
                                     Transaction has been finished.
+                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#transaction-modal-{{ $order->id }}">
+                                        See Transaction
+                                    </button>
                                 @break
 
                                 @case(3)
                                     Reservation has happened. Order complete.
+                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#transaction-modal-{{ $order->id }}">
+                                        See Transaction
+                                    </button>
                                 @break
 
                                 @default
