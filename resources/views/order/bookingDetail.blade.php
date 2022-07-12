@@ -94,6 +94,10 @@
                                             Reservation has happened. Order complete.
                                         @break
 
+                                        @case(4)
+                                            Order is cancelled.
+                                        @break
+
                                         @default
                                             You have not confirmed your booking.
                                         
@@ -139,9 +143,6 @@
                                 </form>
                                 
                                 @break
-                                    
-
-                                @default
 
                                 <form action="/order/update/{{ $order->id }}" method="post">
                                     @csrf 
@@ -161,7 +162,9 @@
                                 See Transaction
                             </button>
                         @endif
-                        <a href="#" class="btn btn-primary btn-lg text-decoration-none">Chat</a>
+                        @if ($order->status != 4)
+                            <a href="#" class="btn btn-primary btn-lg text-decoration-none">Chat</a>
+                        @endif
                         <a href="/dashboard/studio/{{ $order->studio->slug }}" class="btn btn-primary btn-lg text-decoration-none">Return to Studio</a>
                     </div>
                 </div>
