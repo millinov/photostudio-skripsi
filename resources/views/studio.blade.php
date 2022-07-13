@@ -27,7 +27,34 @@
                     @if($studio->user->id === auth()->user()->id)
                         <a href="/dashboard/studio" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Edit Studio</a>
                     @endif
-                    <a href="" class="btn btn-primary btn-usual-color text-decoration-none ms-4">Add To Wishlist</a>
+
+                    @php
+                        $isFavorite = false;
+                    @endphp
+
+                    @if (auth()->user()->favorites->count())
+                        @foreach (auth()->user()->favorites as $favorite)
+                            @if ($favorite->studio_id == $studio->id)
+                                <form action="/delete/{{ $favorite->id }}" method="post"> 
+                                    @method('delete')
+                                    @csrf
+                                    <input type="hidden" name="studio_id" id="studio_id" value="{{ $studio->id }}" />
+                                    <button type="submit" class="btn btn-primary btn-usual-color text-decoration-none ms-4"><i class="bi bi-suit-heart-fill"></i> Add To Wishlist</button>
+                                </form>
+                                @php
+                                    $isFavorite = true;
+                                @endphp
+                            @endif
+                        @endforeach
+                    @endif
+
+                    @if ($isFavorite == false)
+                        <form action="/favorite/create" method="post"> 
+                            @csrf
+                            <input type="hidden" name="studio_id" id="studio_id" value="{{ $studio->id }}" />
+                            <button type="submit" class="btn btn-primary btn-usual-color text-decoration-none ms-4"><i class="bi bi-suit-heart"></i> Add To Wishlist</button>
+                        </form>
+                    @endif
                 </div>
                 <div class="d-flex justify-content-evenly align-items-center">
                     <button type="button" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
