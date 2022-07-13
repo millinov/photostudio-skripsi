@@ -41,9 +41,13 @@ class ReviewController extends Controller
             'rating' => 'required|max:5'
         ]);
 
+        $validatedData['order_id'] = $order->id;
+        $validatedData['studio_id'] = $order->studio->id;
+        $validatedData['user_id'] = $order->user->id;
+
         Review::create($validatedData);
 
-        return redirect('/katalog'. '/'. $order->studio->slug)->with('success', 'Order has been created');;
+        return redirect('/katalog'. '/'. $order->studio->slug)->with('success', 'Review has been created');;
         
     }
 }
