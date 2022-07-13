@@ -3,6 +3,15 @@
 @section('container')
 
     <div class="container">
+
+        @if (session()->has('success'))
+
+        <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+            {{ session('success') }}
+        </div>
+            
+        @endif
+
         <h2>
             {{ $studio->title }}
         </h2>
