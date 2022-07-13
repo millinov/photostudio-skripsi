@@ -172,8 +172,10 @@
         </div>
 
         @include('transaction.createTransaction')
-
-        @include('transaction.seeTransaction')
+        
+        @if ($order->transaction != null)
+            @include('transaction.seeTransaction')
+        @endif
 
     </div>
 @endsection
