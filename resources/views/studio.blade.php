@@ -4,28 +4,6 @@
 
     <div class="container">
 
-        <div class="d-flex align-items-center mt-1 mb-3 justify-content-between">
-            <div class="d-flex justify-content-evenly align-items-center">
-                <p class="text-box align-middle my-0 me-2 fs-6">Owner: <a href="/katalog?owner={{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/katalog?category={{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
-                @if($studio->user->id === auth()->user()->id)
-                    <a href="/dashboard/studio" class="btn btn-primary btn-sm text-decoration-none ms-2">Edit Studio</a>
-                @endif
-                <a href="" class="btn btn-primary btn-sm text-decoration-none ms-2">Add To Favourite</a>
-            </div>
-            <div class="d-flex justify-content-evenly align-items-center">
-                <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
-                    Create Booking
-                </button>
-                <a href="/chatify/{{ $studio->user->id }}" class="btn btn-primary btn-sm text-decoration-none ms-2">Chat Now</a>
-            </div>
-        @if (session()->has('success'))
-
-        <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
-            {{ session('success') }}
-        </div>
-            
-        @endif
-
        <div class="row">
             <h2 class="px-0">
                 {{ $studio->title }}
@@ -47,7 +25,7 @@
                     <button type="button" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
                         Create Booking
                     </button>
-                    <a href="" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Chat Now</a>
+                    <a href="/chatify/{{ $studio->user->id }}" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Chat Now</a>
                 </div>
             </div>
        </div>
