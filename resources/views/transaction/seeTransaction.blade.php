@@ -40,9 +40,11 @@
 
             @if ($order->status === 3)
                 @cannot('seller')
-                    <div class="modal-footer">
-                        <a href="/review/{{ $order->id}}" class="btn btn-primary text-decoration-none me-2">Create Review</a>
-                    </div>
+                    @if (!$order->review)
+                        <div class="modal-footer">
+                            <a href="/review/{{ $order->id}}" class="btn btn-primary text-decoration-none me-2">Create Review</a>
+                        </div>
+                    @endif
                 @endcannot
             @endif
 
