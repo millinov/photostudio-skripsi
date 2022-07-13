@@ -47,7 +47,7 @@ class ReviewController extends Controller
 
         Review::create($validatedData);
 
-        return redirect('/katalog'. '/'. $order->studio->slug)->with('success', 'Review has been created');;
+        return redirect('/katalog'. '/'. $order->studio->slug)->with('success', 'Review has been created');
         
     }
 }
