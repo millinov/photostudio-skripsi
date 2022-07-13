@@ -10,7 +10,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/wishlist') ? 'active' : '' }}" href="#">
+                <a class="nav-link {{ Request::is('dashboard/wishlist') ? 'active' : '' }}" href="/dashboard/wishlist">
                 <i class="bi bi-cart4 me-2"></i>
                 Wishlist
                 </a> 
