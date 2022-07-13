@@ -71,12 +71,6 @@
           font-size: 12px;
           margin-top: 0.5rem;
       }
-
-      .btn-usual-color
-      {
-        background-color: #7388E4;
-        border: none;
-      }
     </style>
 
   </head>

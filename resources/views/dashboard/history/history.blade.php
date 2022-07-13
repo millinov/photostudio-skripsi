@@ -54,14 +54,14 @@
 
                                 @case(2)
                                     Transaction has been finished.
-                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#seeTransactionModal-{{ $order->transaction->id }}">
+                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#transaction-modal-{{ $order->id }}">
                                         See Transaction
                                     </button>
                                 @break
 
                                 @case(3)
                                     Reservation has happened. Order complete.
-                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#seeTransactionModal-{{ $order->transaction->id }}">
+                                    <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#transaction-modal-{{ $order->id }}">
                                         See Transaction
                                     </button>
                                 @break
@@ -92,23 +92,13 @@
                             @endif
                         </td>
                     </tr>
-
-                    
                 @endforeach
             </tbody>
         </table>
 
-        @foreach ($orders as $order)
-            @if ($order->transaction  != null)
-                @include('transaction.seeTransaction')
-            @endif
-        @endforeach
-        
     @else
         <h5 class="text-center">You have not booked any studio</h5>
     @endif
-
-    
 
 </div>
 @endsection
