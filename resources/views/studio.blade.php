@@ -27,7 +27,7 @@
                     @if($studio->user->id === auth()->user()->id)
                         <a href="/dashboard/studio" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Edit Studio</a>
                     @endif
-                    <a href="" class="btn btn-primary btn-usual-color text-decoration-none ms-4">Add To Favourite</a>
+                    <a href="" class="btn btn-primary btn-usual-color text-decoration-none ms-4">Add To Wishlist</a>
                 </div>
                 <div class="d-flex justify-content-evenly align-items-center">
                     <button type="button" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
