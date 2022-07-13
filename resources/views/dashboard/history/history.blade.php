@@ -99,7 +99,9 @@
         </table>
 
         @foreach ($orders as $order)
-            @include('transaction.seeTransaction')
+            @if ($order->transaction  != null)
+                @include('transaction.seeTransaction')
+            @endif
         @endforeach
         
     @else
