@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="post" action="/transaction/{{ $order->user->username }}" id="createOrderForm" enctype="multipart/form-data">
+            <form method="post" action="/transaction/{{ $order->id }}" id="createOrderForm" enctype="multipart/form-data">
                 @csrf
 
                 <input type="hidden" value="2" name="status" id="status">
@@ -33,19 +33,8 @@
 
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="invoice" class="form-label">Invoice</label>
-                            <input class="form-control" type="file" id="invoice" name="invoice">
-
-                            @error('invoice')
-                                <div class="invalid-feedback mb-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
                             <label for="receipt_full_payment" class="form-label">Full Payment's Receipt</label>
-                            <input class="form-control" type="file" id="receipt_full_payment" name="receipt_full_payment">
+                            <input class="form-control" type="file" id="receipt_full_payment" name="receipt_full_payment" required>
 
                             @error('receipt_full_payment')
                                 <div class="invalid-feedback mb-2">
@@ -69,6 +58,22 @@
                             
                         @endif
 
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="invoiceCheck" name="invoiceCheck" value="{{ old('invoiceCheck') }}" onchange="checkInvoice()">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Invoice
+                                </label>
+                            </div>
+                            <input class="form-control" type="file" id="invoice" name="invoice">
+                            
+                            @error('invoice')
+                                <div class="invalid-feedback mb-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -87,18 +92,50 @@
         display: {
             components: {
                 clock: false,
-                decades: false
-            }
+                decades: false,
+            },
+            theme: 'light'
         },
         restrictions: {
             minDate: Date.today()
         }
     });
 
+    const invoiceForm = document.getElementById('invoice');
+    const invoiceCheck = document.getElementById('invoiceCheck');
+
     @if($errors->any())
         $(document).ready(function(){
                 $("#createTransactionModal").modal('show');
         });
     @endif
+    
+    if(invoiceCheck.checked == true)
+    {
+        invoiceForm.disabled = false;
+    }
+    else{
+        invoiceForm.disabled = true;
+    }
+
+    function checkInvoice()
+    {
+        if(invoiceForm.disabled) {
+            if(invoiceCheck.checked == false) {
+                invoiceForm.disabled = true;
+            }
+            else {
+                invoiceForm.disabled = false;
+            }
+        }
+        else{
+            if(invoiceCheck.checked == false) {
+                invoiceForm.disabled = false;
+            }
+            else {
+                invoiceForm.disabled = true;
+            }
+        }
+    }
 
 </script>
