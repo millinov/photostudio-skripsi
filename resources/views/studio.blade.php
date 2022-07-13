@@ -98,7 +98,7 @@
         
                 </div>
             @else
-                <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid" alt="{{ $studio->category->name }}">
+                <img src="https://picsum.photos/1200/600?random={{ $studio->id }}" class="img-fluid " alt="{{ $studio->category->name }}" style="max-height: 300px; max-width:700px;">
             @endif
 
             
