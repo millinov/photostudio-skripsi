@@ -95,4 +95,4 @@ Route::get('/receipt/iv/{transaction:id}', [TransactionController::class, 'ivDow
 
 //review
 Route::get('/review/{order:id}', [ReviewController::class, 'create'])->middleware('auth');
-Route::post('/review/{order:id}', [ReviewController::class, 'store'])->middleware('auth');
+Route::post('/review/create/{order:id}', [ReviewController::class, 'store'])->middleware('auth');
