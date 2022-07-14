@@ -1,13 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light fs-6" style="background-color: #B7F9F5;">
     <div class="container">
-      <a class="navbar-brand" href="/katalog">FOTOLOGY</a>
+      <a class="navbar-brand" href="/">FOTOLOGY</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" href="/katalog">Home</a>
+            <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link {{ ($active === "studios") ? 'active' : '' }}" href="/katalog">Katalog</a>
           </li>
           <li class="nav-item">
               <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Kategori</a>

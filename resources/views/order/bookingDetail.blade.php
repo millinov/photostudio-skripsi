@@ -158,12 +158,12 @@
                         @endif
 
                         @if ($order->transaction != null)
-                            <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#transaction-modal">
+                            <button type="button" class="btn btn-primary btn-lg text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#seeTransactionModal-{{ $order->transaction->id }}">
                                 See Transaction
                             </button>
                         @endif
                         @if ($order->status != 4)
-                            <a href="/chatify/{{ $order->user->id }}" class="btn btn-primary btn-lg text-decoration-none">Chat</a>
+                            <a href="#" class="btn btn-primary btn-lg text-decoration-none me-2">Chat</a>
                         @endif
                         <a href="/dashboard/studio/{{ $order->studio->slug }}" class="btn btn-primary btn-lg text-decoration-none">Return to Studio</a>
                     </div>

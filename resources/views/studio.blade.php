@@ -60,7 +60,7 @@
                     <button type="button" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
                         Create Booking
                     </button>
-                    <a href="/chatify/{{ $studio->user->id }}" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Chat Now</a>
+                    <a href="" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Chat Now</a>
                 </div>
             </div>
        </div>
@@ -155,7 +155,7 @@
                                             <div class="row">
                                                 <div class="col-4 px-0 d-flex justify-content-center">
                                                     <div class="img-thumbnail rounded-circle my-3 p-0" style="max-width: 50px; max-height: 50px; overflow: hidden;">
-                                                        <img src="img/image-about.jpg" alt="{{ $review->user->username }}"style="height: 50px;" class="d-block m-auto">
+                                                        <img src="@if($review->user->profile_pic != null) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else img/image-about.jpg  @endif" alt="{{ $review->user->username }}"style="height: 50px;" class="d-block m-auto">
                                                     </div>
                                                 </div>
                                                 <div class="col-8 px-0 d-flex flex-column justify-content-center">
