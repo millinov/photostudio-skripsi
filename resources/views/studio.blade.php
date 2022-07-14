@@ -24,6 +24,8 @@
                         <p class="my-0">Address: {{ $studio->address }}</p>
                         <p class="my-0">No Telp: {{ $studio->user->phone_number }}</p>
                     </div>
+                    @auth
+                        
                     @if($studio->user->id === auth()->user()->id)
                         <a href="/dashboard/studio" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Edit Studio</a>
                     @endif
@@ -62,6 +64,7 @@
                     </button>
                     <a href="" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Chat Now</a>
                 </div>
+                @endauth
             </div>
        </div>
 
@@ -164,8 +167,6 @@
                                                 </div>
                                             </div>
                                             <p class="card-text" style="max-height: 100px; overflow:auto;" >{{ $review->review_text }}</p>
-                                            <a href="#" class="card-link">Card link</a>
-                                            <a href="#" class="card-link">Another link</a>
                                         </div>
                                     </div>
                                 </div>
