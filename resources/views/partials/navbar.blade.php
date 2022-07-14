@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B7F9F5;">
+<nav class="navbar navbar-expand-lg navbar-light fs-6" style="background-color: #B7F9F5;">
     <div class="container">
       <a class="navbar-brand" href="/">FOTOLOGY</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,8 +22,11 @@
           @auth
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Welcome back, {{ auth()->user()->name }}
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="">Welcome back, {{ auth()->user()->name }}</span>
+                <div class="img-thumbnail ms-2 rounded-circle p-0" style="max-width: 40px; max-height: 40px; overflow: hidden;">
+                    <img src="@if(auth()->user()->profile_pic) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else img/image-about.jpg  @endif" alt="{{ auth()->user()->username }}"style="height: 40px;" class="d-block m-auto">
+                </div>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/dashboard">My Dashboard <i class="bi bi-layout-text-sidebar-reverse"></i></a></li>
