@@ -60,12 +60,6 @@
           flex-wrap: wrap;
 
       }
-      figure{
-          width: 45%
-      }
-      #images-preview img{
-          width: 100%
-      }
       figcaption{
           text-align: center;
           font-size: 12px;
