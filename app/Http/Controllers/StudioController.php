@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Image;
+use App\Models\Order;
 use App\Models\Studio;
 use App\Models\Category;
-use App\Models\Image;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class StudioController extends Controller
 {
@@ -131,11 +132,14 @@ class StudioController extends Controller
      */
     public function show(Studio $studio)
     {
+        $orders = Order::where('studio_id', $studio->id)->latest()->get();
+
         return view('dashboard.studio.index', [
             'title' => 'Dashboard',
             'active' => 'dashboard',
             'studio' => $studio,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'orders' => $orders
         ]);
     }
 

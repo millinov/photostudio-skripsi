@@ -6,23 +6,26 @@
     <div class="border w-100 d-flex justify-content-center">
         <div class="row row-cols-3 my-3 w-100">
 
-            @if ($studio->orders->count())
-                @foreach ($studio->orders as $order)
+            @if ($orders->count())
+                @foreach ($orders as $order)
                     <div class="col d-flex">
 
                         <div class="card mx-2 my-2">
 
                             <div class="position-relative mx-1 mt-1">
 
-                                <img src="https://picsum.photos/300/300?random={{ $loop->iteration }}" alt="..." class=" img-thumbnail card-img-top">
-                                <div class="position-absolute px-3 py-2 bottom-0 start-0 text-white" style="background-color: rgba(0, 0, 0, 0.575); border-top-right-radius: 0.375rem; margin-bottom: 0.3rem; margin-left: 0.35rem;">
+                                {{-- <img src="@if($order->user->profile_pic != null) {{ asset('storage/') .'/' . $order->user->profile_pic }} @else {{ asset('img/image-about.jpg') }} @endif" alt="..." class=" img-thumbnail card-img-top"> --}}
+                                <div class="img-thumbnail card-img-top" style="max-width: 100%; max-height: 250px; overflow: hidden;">
+                                    <img src="@if($order->user->profile_pic) {{ asset('storage/') .'/' . $order->user->profile_pic }} @else {{ asset('img/image-about.png') }} @endif" alt="{{ auth()->user()->username }}"style="height: 250px;" class="d-block m-auto">
+                                </div>
+                                <div class="position-absolute px-3 py-2 bottom-0 start-0 text-white" style="background-color: rgba(0, 0, 0, 0.575); border-top-right-radius: 0.375rem; margin-bottom: 0.1rem; margin-left: 0.5rem;">
                                     <small>{{ $order->user->name }}</small>
                                 </div>
 
                             </div>
 
                             <div class="card-body">
-                                <p class="fs-9">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima, nulla?</p>
+                                <p class="fs-9">{{ $order->desc }}</p>
                                 <span>Status:
                                     @switch($order->status)
                                         @case(0)

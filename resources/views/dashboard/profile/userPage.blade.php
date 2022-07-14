@@ -36,7 +36,7 @@
         </div>
         <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
             <div class="img-thumbnail rounded-circle my-3 p-0" style="max-width: 300px; max-height: 300px; overflow: hidden;">
-                <img src="@if(auth()->user()->profile_pic) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else img/image-about.jpg  @endif" alt="{{ auth()->user()->username }}"style="height: 300px;" class="d-block m-auto">
+                <img src="@if(auth()->user()->profile_pic) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else {{ asset('img/image-about.png') }} @endif" alt="{{ auth()->user()->username }}"style="height: 300px;" class="d-block m-auto">
             </div>
         </div>
     </div>
