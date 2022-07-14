@@ -7,13 +7,64 @@
             {{ $studio->title }}
         </h2>
 
-        <div class="d-flex align-items-center mt-1 mb-3 justify-content-between">
-            <div class="d-flex justify-content-evenly align-items-center">
-                <p class="text-box align-middle my-0 me-2 fs-6">Owner: <a href="/katalog?owner={{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/katalog?category={{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
-                @if($studio->user->id === auth()->user()->id)
-                    <a href="/dashboard/studio" class="btn btn-primary btn-sm text-decoration-none ms-2">Edit Studio</a>
-                @endif
-                <a href="" class="btn btn-primary btn-sm text-decoration-none ms-2">Add To Favourite</a>
+        @if (session()->has('success'))
+
+        <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+            {{ session('success') }}
+        </div>
+            
+        @endif
+
+       <div class="row">
+            <h2 class="px-0">
+                {{ $studio->title }}
+            </h2>
+
+            <div class="d-flex px-0 align-items-center my-1 justify-content-between">
+                <div class="d-flex justify-content-evenly align-items-center">
+                    <div>
+                        <p class="text-box align-middle my-0 me-2 fs-6">Owner: <a href="/katalog?owner={{ $studio->user->username }}" class="text-decoration-none">{{ $studio->user->name }}</a> in <a href="/katalog?category={{ $studio->category->slug }}" class="text-decoration-none">{{ $studio->category->name }}</a></p>
+                        <p class="my-0">Address: {{ $studio->address }}</p>
+                        <p class="my-0">No Telp: {{ $studio->user->phone_number }}</p>
+                    </div>
+                    @if($studio->user->id === auth()->user()->id)
+                        <a href="/dashboard/studio" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Edit Studio</a>
+                    @endif
+
+                    @php
+                        $isFavorite = false;
+                    @endphp
+
+                    @if (auth()->user()->favorites->count())
+                        @foreach (auth()->user()->favorites as $favorite)
+                            @if ($favorite->studio_id == $studio->id)
+                                <form action="/delete/{{ $favorite->id }}" method="post"> 
+                                    @method('delete')
+                                    @csrf
+                                    <input type="hidden" name="studio_id" id="studio_id" value="{{ $studio->id }}" />
+                                    <button type="submit" class="btn btn-primary btn-usual-color text-decoration-none ms-4"><i class="bi bi-suit-heart-fill"></i> Add To Wishlist</button>
+                                </form>
+                                @php
+                                    $isFavorite = true;
+                                @endphp
+                            @endif
+                        @endforeach
+                    @endif
+
+                    @if ($isFavorite == false)
+                        <form action="/favorite/create" method="post"> 
+                            @csrf
+                            <input type="hidden" name="studio_id" id="studio_id" value="{{ $studio->id }}" />
+                            <button type="submit" class="btn btn-primary btn-usual-color text-decoration-none ms-4"><i class="bi bi-suit-heart"></i> Add To Wishlist</button>
+                        </form>
+                    @endif
+                </div>
+                <div class="d-flex justify-content-evenly align-items-center">
+                    <button type="button" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">
+                        Create Booking
+                    </button>
+                    <a href="" class="btn btn-primary btn-usual-color btn-sm text-decoration-none ms-2">Chat Now</a>
+                </div>
             </div>
             <div class="d-flex justify-content-evenly align-items-center">
                 <button type="button" class="btn btn-primary btn-sm text-decoration-none ms-2" data-bs-toggle="modal" data-bs-target="#createOrderFormModal">

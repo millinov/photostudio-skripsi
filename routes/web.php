@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -66,6 +67,8 @@ Route::post('/become-a-seller/{user:username}', [UserController::class, 'becomeS
 //dashboard user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
 Route::get('/dashboard/history', [OrderController::class, 'history'])->middleware('auth');
+Route::get('/dashboard/wishlist', [FavoriteController::class, 'index'])->middleware('auth');
+
 
 //seller
 Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('seller');
@@ -75,7 +78,6 @@ Route::get('/dashboard/checkSlug', [StudioController::class, 'createSlug']);
 Route::get('/dashboard/categories', [UserController::class, 'adminCategories'])->middleware('admin');
 Route::post('/dashboard/categories', [CategoryController::class, 'store']);
 Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'createSlug']);
-
 Route::get('/dashboard/users', [UserController::class, 'adminUsers'])->middleware('admin');
 
 //order
@@ -84,4 +86,16 @@ Route::get('/order/{order:id}', [OrderController::class, 'show'])->middleware('s
 Route::post('/order/update/{order:id}', [OrderController::class, 'update'])->middleware('auth');
 
 //transaction
-Route::post('/transaction/{user:username}', [TransactionController::class, 'store'])->middleware('seller');
+Route::post('/transaction/{order:id}', [TransactionController::class, 'store'])->middleware('seller');
+Route::get('/receipt/fp/{transaction:id}', [TransactionController::class, 'fpDownload'])->middleware('auth');
+Route::get('/receipt/dp/{transaction:id}', [TransactionController::class, 'dpDownload'])->middleware('auth');
+Route::get('/receipt/iv/{transaction:id}', [TransactionController::class, 'ivDownload'])->middleware('auth');
+
+//review
+Route::get('/review/{order:id}', [ReviewController::class, 'create'])->middleware('auth');
+Route::post('/review/create/{order:id}', [ReviewController::class, 'store'])->middleware('auth');
+
+//favorite
+Route::post('/favorite/create', [FavoriteController::class, 'store'])->middleware('auth');
+Route::delete('/delete/{favorite:id}', [FavoriteController::class, 'delete'])->middleware('auth');
+
