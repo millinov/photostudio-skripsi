@@ -152,8 +152,17 @@
                                 <div class="col p-0">
                                     <div class="card m-0" style="max-height: ">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $review->rating }} / 5 <i class="bi bi-star-fill" style="color: #ffc115;"></i></h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">From {{ $review->user->name }}</h6>
+                                            <div class="row">
+                                                <div class="col-4 px-0 d-flex justify-content-center">
+                                                    <div class="img-thumbnail rounded-circle my-3 p-0" style="max-width: 50px; max-height: 50px; overflow: hidden;">
+                                                        <img src="@if($review->user->profile_pic != null) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else img/image-about.jpg  @endif" alt="{{ $review->user->username }}"style="height: 50px;" class="d-block m-auto">
+                                                    </div>
+                                                </div>
+                                                <div class="col-8 px-0 d-flex flex-column justify-content-center">
+                                                    <h5 class="card-title">{{ $review->rating }} / 5 <i class="bi bi-star-fill" style="color: #ffc115;"></i></h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">From {{ $review->user->name }}</h6>
+                                                </div>
+                                            </div>
                                             <p class="card-text" style="max-height: 100px; overflow:auto;" >{{ $review->review_text }}</p>
                                             <a href="#" class="card-link">Card link</a>
                                             <a href="#" class="card-link">Another link</a>

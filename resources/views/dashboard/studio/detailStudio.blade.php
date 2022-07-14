@@ -151,12 +151,14 @@
             let reader = new FileReader();
             let figure = document.createElement("figure");
             let figCap = document.createElement("figcaption");
+            figure.setAttribute("style","width: 45%;");
 
             figCap.innerText = i.name;
             figure.appendChild(figCap);
             reader.onload=()=>{
                 let img = document.createElement("img");
                 img.setAttribute("src",reader.result);
+                img.setAttribute("style","width: 100%;");
                 figure.insertBefore(img,figCap);
             }
             imageContainer.appendChild(figure);

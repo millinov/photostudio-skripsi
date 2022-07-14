@@ -69,7 +69,7 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard.userPage',[
+        return view('dashboard.profile.userPage',[
             'title' => 'Dashboard',
             'active' => 'dashboard',
             'studio' => Studio::where('user_id', auth()->user()->id)->latest()->first()
@@ -113,5 +113,19 @@ class UserController extends Controller
             return redirect('/dashboard/users')->with('success', $user->name . 'has become a Studio Owner');
         }
         
+    }
+
+    public function changeProfPic(Request $request)
+    {
+        $validatedData = $request->validate([
+            'profile_pic' => 'required|image||mimes:jpeg,png,jpg,gif,svg|max:10240'
+        ]);
+
+        $validatedData['profile_pic'] = $request->profile_pic->store('profile-pic');
+
+        User::where('id', auth()->user()->id)
+                ->update(['profile_pic' => $validatedData['profile_pic']]);
+
+        return redirect('/dashboard')->with('success', 'Profile Picture has been changed!');
     }
 }

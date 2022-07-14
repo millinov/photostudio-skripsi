@@ -58,6 +58,8 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth
 Route::get('/dashboard/history', [OrderController::class, 'history'])->middleware('auth');
 Route::get('/dashboard/wishlist', [FavoriteController::class, 'index'])->middleware('auth');
 
+Route::post('/change-pic', [UserController::class, 'changeProfPic'])->middleware('auth');
+
 
 //seller
 Route::resource('/dashboard/studio', StudioController::class)->name('show','studio')->middleware('seller');

@@ -2,7 +2,7 @@
 
 @section('main')
 
-<div class="pt-3 pb-3">
+<div class="pt-3 pb-3 w-100">
     @if (session()->has('success'))
 
     <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
@@ -10,7 +10,11 @@
     </div>
         
     @endif
-    <table>
+
+    <h3>Studio Owner Application</h3>
+    <hr>
+    
+    <table class="table fs-8" style="border-color: black">
         <thead>
             <tr>
                 <th>No.</th>
