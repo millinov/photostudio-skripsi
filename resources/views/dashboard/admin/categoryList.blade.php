@@ -2,7 +2,7 @@
 
 @section('main')
 
-<div class="pt-3 pb-3">
+<div class="pt-3 pb-3 w-100 m-auto">
     <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#createCategoryFormModal">
         Create new category
     </button>
