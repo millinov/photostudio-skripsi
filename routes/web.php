@@ -54,15 +54,12 @@ Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
 // halaman kategori
 Route::get('/categories', [CategoryController::class, 'show']);
 
-// untuk login dan logout
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [UserController::class, 'authenticate']);
-Route::post('/logout', [UserController::class, 'logout']);
-// untuk register
-Route::get('/register', [UserController::class, 'register'])->middleware('guest');
-Route::post('/register', [UserController::class, 'store']);
 
 Route::post('/become-a-seller/{user:username}', [UserController::class, 'becomeSeller']);
+
+//email verification
+Auth::routes(['verify' => true]);
+Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
 //dashboard user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');
@@ -99,3 +96,7 @@ Route::post('/review/create/{order:id}', [ReviewController::class, 'store'])->mi
 Route::post('/favorite/create', [FavoriteController::class, 'store'])->middleware('auth');
 Route::delete('/delete/{favorite:id}', [FavoriteController::class, 'delete'])->middleware('auth');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
