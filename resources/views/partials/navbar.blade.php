@@ -19,6 +19,10 @@
 
           @auth
 
+            <li class="nav-item d-flex align-items-center">
+                <a class="nav-link d-block m-auto" href="/chatify">Chat <i class="bi bi-chat-dots"></i></a>
+            </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="">Welcome back, {{ auth()->user()->name }}</span>

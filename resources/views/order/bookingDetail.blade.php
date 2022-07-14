@@ -163,7 +163,7 @@
                             </button>
                         @endif
                         @if ($order->status != 4)
-                            <a href="#" class="btn btn-primary btn-lg text-decoration-none me-2">Chat</a>
+                            <a href="/chatify/{{ $order->user->id }}" class="btn btn-primary btn-lg text-decoration-none me-2">Chat</a>
                         @endif
                         <a href="/dashboard/studio/{{ $order->studio->slug }}" class="btn btn-primary btn-lg text-decoration-none">Return to Studio</a>
                     </div>

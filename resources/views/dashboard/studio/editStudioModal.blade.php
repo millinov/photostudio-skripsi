@@ -90,8 +90,8 @@
                         <div id="images-preview">
                             @if ($studio->images->isNotEmpty())
                                 @foreach ($studio->images as $image)
-                                    <figure> 
-                                        <img src="{{ asset('storage/') .'/' . $image->path }}" alt="">
+                                    <figure style="width: 45%;"> 
+                                        <img src="{{ asset('storage/') .'/' . $image->path }}" alt="" style="width: 100%;">
                                     </figure>
                                 @endforeach
                             @endif
