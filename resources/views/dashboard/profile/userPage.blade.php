@@ -35,7 +35,9 @@
             </div>
         </div>
         <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
-            <img src="img/image-about.jpg" alt="{{ auth()->user()->username }}" width="300" class="img-thumbnail rounded-circle my-3">
+            <div class="img-thumbnail rounded-circle my-3 p-0" style="max-width: 300px; max-height: 300px; overflow: hidden;">
+                <img src="@if(auth()->user()->profile_pic) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else img/image-about.jpg  @endif" alt="{{ auth()->user()->username }}"style="height: 300px;" class="d-block m-auto">
+            </div>
         </div>
     </div>
 
@@ -44,9 +46,12 @@
             <button class="btn btn-primary btn-usual-color w-50 ">Edit Profile</button>
         </div>
         <div class="col d-flex flex-column align-items-center">
-            <button class="btn row btn-primary btn-usual-color w-50">Change Profile Picture</button>
+            <button class="btn row btn-primary btn-usual-color w-50" data-bs-toggle="modal" data-bs-target="#editPictureModal">Change Profile Picture</button>
         </div>
     </div>
+
+    @include('dashboard.profile.editPictureModal')
+
 </div>
     
 @endsection
