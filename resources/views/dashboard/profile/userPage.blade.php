@@ -43,7 +43,7 @@
 
     <div class="row">
         <div class="col d-flex flex-column align-items-center">
-            <button class="btn btn-primary btn-usual-color w-50 ">Edit Profile</button>
+            {{-- <button class="btn btn-primary btn-usual-color w-50 ">Edit Profile</button> --}}
         </div>
         <div class="col d-flex flex-column align-items-center">
             <button class="btn row btn-primary btn-usual-color w-50" data-bs-toggle="modal" data-bs-target="#editPictureModal">Change Profile Picture</button>
