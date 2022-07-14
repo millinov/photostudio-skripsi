@@ -8,6 +8,7 @@ use App\Http\Controllers\StudioController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,6 @@ Route::get('/transaction', function () {
         "active" => 'transaction',
     ]);
 });
-
-
-
 
 Route::get('/katalog', [StudioController::class, 'katalog']);
 
@@ -95,7 +93,6 @@ Route::post('/review/create/{order:id}', [ReviewController::class, 'store'])->mi
 //favorite
 Route::post('/favorite/create', [FavoriteController::class, 'store'])->middleware('auth');
 Route::delete('/delete/{favorite:id}', [FavoriteController::class, 'delete'])->middleware('auth');
-
 
 Auth::routes();
 

@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function register()
     {
-        return view('auth.register', [
+        return view('register.formRegister', [
             "title" => 'Register',
             "active" => 'register'
         ]);
@@ -41,10 +41,9 @@ class UserController extends Controller
 
     public function login()
     {
-        return view('auth.login', [
+        return view('login.formLogin', [
             "title" => 'login',
-            "active" => 'login
-            '
+            "active" => 'login'
         ]);
     }
 
