@@ -11,13 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function register()
-    {
-        return view('register.formRegister', [
-            "title" => 'Register',
-            "active" => 'register'
-        ]);
-    }
+ 
 
     public function store(Request $request)
     {
@@ -39,13 +33,11 @@ class UserController extends Controller
         return redirect('/login')->with('success', 'Registration successfull! Please login');
     }
 
-    public function login()
-    {
-        return view('login.formLogin', [
-            "title" => 'login',
-            "active" => 'login'
-        ]);
-    }
+   
+
+   
+
+    
 
     public function authenticate(Request $request)
     {

@@ -19,4 +19,12 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+    public function showForgotPassword()
+    {
+        return view('auth.verify', [
+            "title" => 'verify',
+            "active" => 'verify'
+        ]);
+    }
 }

@@ -23,11 +23,13 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/katalog', [StudioController::class, 'browseIndex']);
 Route::get('/', function () {
-    return view('home',[
-        "title" => "Home",
+    return view('home', [
+        "title" => "home",
         "active" => 'home',
     ]);
-})->name('home');
+})->middleware('auth');
+
+Route::get('/home', 'HomeController@index');
 
 // Route::get('/about', function () {
 //     return view('about', [
@@ -51,7 +53,6 @@ Route::get('/katalog/{studio:slug}', [StudioController::class, 'showPage']);
 
 // halaman kategori
 Route::get('/categories', [CategoryController::class, 'show']);
-
 
 Route::post('/become-a-seller/{user:username}', [UserController::class, 'becomeSeller']);
 
