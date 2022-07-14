@@ -2,7 +2,7 @@
 
 @section('main')
 
-<div class="col py-4 px-3 flex-column justify-content-start">
+<div class="col py-4 w-100 px-3 flex-column justify-content-start">
 
     @if (session()->has('success'))
 
