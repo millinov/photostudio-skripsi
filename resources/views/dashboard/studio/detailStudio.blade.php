@@ -94,19 +94,7 @@
                 </div>
         
                 <div class="mt-3">
-                    <label for="title">Price Range:</label>
-                    {{-- <input type="text" readonly class="form-control" id="title" name="title" placeholder="Title" value="--"> --}}
-                    <p>--</p>
-                </div>
-    
-                <div class="mt-3">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#editStudioFormModal" class="btn text-white border-0 my-3" style="background-color: #7388E4">Edit Studio</button>
-                    
-                    <form action="/dashboard/studio/{{ $studio->slug }}" method="post">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-warning" onclick="return confirm('Are you sure you want to delete your studio?')">Delete Studio</button>
-                    </form>
 
                 </div>
     

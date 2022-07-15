@@ -169,7 +169,7 @@
                                                     <div class="img-thumbnail rounded-circle my-3 p-0" style="max-width: 50px; max-height: 50px; overflow: hidden;">
                                                         <img src="@if($review->user->profile_pic != null) {{ asset('storage/') .'/' . auth()->user()->profile_pic }} @else {{ asset('img/image-about.jpg') }} @endif" alt="{{ $review->user->username }}"style="height: 50px;" class="d-block m-auto">
                                                     </div>
-                                                </div>
+                                                 </div>
                                                 <div class="col-8 px-0 d-flex flex-column justify-content-center">
                                                     <h5 class="card-title">{{ $review->rating }} / 5 <i class="bi bi-star-fill" style="color: #ffc115;"></i></h5>
                                                     <h6 class="card-subtitle mb-2 text-muted">From {{ $review->user->name }}</h6>

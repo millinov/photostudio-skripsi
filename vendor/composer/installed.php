@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '322304095f05c4d565869df3d7ee7664d14d651b',
+        'reference' => '89e06683fd6412fe1882ebe61994b04c3782d705',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -406,7 +406,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '322304095f05c4d565869df3d7ee7664d14d651b',
+            'reference' => '89e06683fd6412fe1882ebe61994b04c3782d705',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -436,6 +436,15 @@
             'reference' => '09f0e9fb61829f628205b7c94906c28740ff9540',
             'dev_requirement' => false,
         ),
+        'laravel/socialite' => array(
+            'pretty_version' => 'v5.5.2',
+            'version' => '5.5.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/socialite',
+            'aliases' => array(),
+            'reference' => '68afb03259b82d898c68196cbcacd48596a9dd72',
+            'dev_requirement' => false,
+        ),
         'laravel/tinker' => array(
             'pretty_version' => 'v2.7.2',
             'version' => '2.7.2.0',
@@ -452,7 +461,7 @@
             'install_path' => __DIR__ . '/../laravel/ui',
             'aliases' => array(),
             'reference' => '65ec5c03f7fee2c8ecae785795b829a15be48c2c',
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'league/commonmark' => array(
             'pretty_version' => '2.3.3',
@@ -488,6 +497,15 @@
             'install_path' => __DIR__ . '/../league/mime-type-detection',
             'aliases' => array(),
             'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
+            'dev_requirement' => false,
+        ),
+        'league/oauth1-client' => array(
+            'pretty_version' => 'v1.10.1',
+            'version' => '1.10.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/oauth1-client',
+            'aliases' => array(),
+            'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
             'dev_requirement' => false,
         ),
         'mockery/mockery' => array(

@@ -3,9 +3,12 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
@@ -97,3 +100,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/', function () {
 //     return redirect('/katalog');
 // })->middleware('auth');
+
+//Google Login
+Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/laravel-socialite/public/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+
